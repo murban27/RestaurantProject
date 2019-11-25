@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.Stoly"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+
+            <ListView
+                ItemsSource="{Binding Stolies}"
+                HorizontalOptions="FillAndExpand"
+               
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                BackgroundColor="AliceBlue"
+               
+               >
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+
+                        <ViewCell>
+
+
+                            <StackLayout   BackgroundColor="Gray"  HorizontalOptions="FillAndExpand">
+  <border:SfBorder BorderColor="Red" BorderWidth="3">
+			<Label Text="Check"/>
+			</border:SfBorder>                              <border:SfBorder BorderColor="Red" BorderWidth="3">
+                                    <Label Text="Check"/>
+                                </border:SfBorder>
+                                <border:SfBorder BorderColor="Red" BorderWidth="3">
+                                    <Label Text="Check"/>
+                                </border:SfBorder>
+                                <Label Text="{Binding Id}"
+
+
+                                    LineBreakMode="CharacterWrap" 
+                             
+                                FontSize="16" />
+
+                                <Label Text="{Binding Obsazeno}" 
+                             
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
