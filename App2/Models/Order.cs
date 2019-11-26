@@ -19,7 +19,7 @@ namespace App2.Models
         public bool IsClosed { get; set; }
 
         public DateTime CreaterTime { get; set; } = DateTime.Now;
-        ;
+     
         public DateTime ClosedTime { get; set; }
 
 

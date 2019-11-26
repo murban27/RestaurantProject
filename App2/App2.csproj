@@ -16,7 +16,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.2.0.51" />
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />  
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
 

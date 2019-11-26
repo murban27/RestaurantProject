@@ -7,17 +7,17 @@ using System.Text;
 
 namespace App2.Models
 {
-   public class Stoly
+    public class Stoly
     {
-      
-        [PrimaryKey,AutoIncrement]
+
+        [PrimaryKey, AutoIncrement]
 
         public int Id { get; set; }
-        
-        public int Kapacita { get; set; } 
+
+        public int Kapacita { get; set; }
         [DefaultValue(false)]
         public bool Obsazeno { get; set; }
-        
+        public ICollection<Order>Orders { get; set; }
       
     }
 }

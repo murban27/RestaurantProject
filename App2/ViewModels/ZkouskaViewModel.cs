@@ -24,7 +24,7 @@ namespace App2.ViewModels
            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 80, Obsazeno = false });
            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
-            LoadItemsCommand = new Command(async () =>await GetTask());
+            LoadItemsCommand = new Command(async() =>await GetTask());
         }
      
 

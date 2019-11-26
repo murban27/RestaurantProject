@@ -41,7 +41,7 @@ namespace App2.Services
             var oldItem = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
             items.Remove(oldItem);
             items.Add(item);
-
+             
             return await Task.FromResult(true);
         }
 

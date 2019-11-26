@@ -40,9 +40,11 @@ namespace App2.Services
 
         }
 
-        public Task<bool> UpdateItemAsync(Stoly item)
+        public async Task<bool> UpdateItemAsync(Stoly item)
         {
-            throw new NotImplementedException();
+             App.RestContext.Stolies.Update(item);
+            App.RestContext.SaveChanges();
+            return await Task.FromResult(true);
         }
     }
 }
