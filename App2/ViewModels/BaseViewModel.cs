@@ -14,6 +14,9 @@ namespace App2.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
         public IDataStore<Stoly> Stolyies => DependencyService.Get<IDataStore<Stoly>>() ?? new StolyDataService();
+        public IDataStore<Order> Orders => DependencyService.Get<IDataStore<Order>>() ?? new OrdersForTablesDataStorecs();
+        public IDataStore<Polozka> Polozky => DependencyService.Get<IDataStore<Polozka>>() ?? new NewItem();
+        public IDataStore<VAT> VAT => DependencyService.Get<IDataStore<VAT>>() ?? new VatServices();
         bool isBusy = false;
         public bool IsBusy
         {

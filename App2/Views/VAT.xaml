@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.VAT">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <listview:SfListView  x:Name="listView"  ItemsSource="{Binding Dane}" Orientation="Vertical" >
+
+                <listview:SfListView.LayoutManager >
+                    <listview:GridLayout SpanCount="2" >
+
+                    </listview:GridLayout>
+                </listview:SfListView.LayoutManager>
+                <listview:SfListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="#4CA1FE" HeightRequest="45">
+                            <Label LineBreakMode="NoWrap"
+                    Margin="10,0,10,0" Text="Daňové sazby" FontAttributes="Bold"
+                    FontSize="18" TextColor="White" HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+
+                </listview:SfListView.HeaderTemplate>
+
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="StartAndExpand" Padding="10" BackgroundColor="SaddleBrown">
+
+                            <Label Text="{Binding name}" VerticalOptions="Start" HorizontalOptions="Start" Grid.ColumnSpan="1"/>
+                            <Label Text="{Binding Value} " VerticalOptions="End" HorizontalOptions="End" Grid.ColumnSpan="2"></Label>
+                        </Grid>
+                      
+                        
+                    </DataTemplate>
+
+                  
+               
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

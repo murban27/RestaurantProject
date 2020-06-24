@@ -42,6 +42,14 @@ namespace App2.Views
                     case (int)MenuItemType.Zkouska:
                         MenuPages.Add(id, new NavigationPage(new Zkouska()));
                         break;
+                    case (int)MenuItemType.Vat:
+                        MenuPages.Add(id, new NavigationPage(new VAT()));
+                        break;
+                    /*case (int)MenuItemType.CollectionTables:
+                        MenuPages.Add(id, new NavigationPage(new TableCollection()));
+                        break;*/
+
+
                 }
             }
 

@@ -6,7 +6,8 @@ xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XF
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="App2.Views.Zkouska">
+             x:Class="App2.Views.Zkouska"
+             >
     <ContentPage.Content >
 
         <StackLayout x:Name="Layout">

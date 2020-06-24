@@ -9,7 +9,10 @@ namespace App2.Models
         Browse,
         About,
         Stoly,
-        Zkouska
+        Zkouska,
+        Tables,
+        CollectionTables,
+        Vat
     }
     public class HomeMenuItem
     {

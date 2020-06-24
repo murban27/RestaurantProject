@@ -18,6 +18,7 @@ namespace App2.Models
         [DefaultValue(false)]
         public bool Obsazeno { get; set; }
         public ICollection<Order>Orders { get; set; }
-      
+    
+
     }
 }

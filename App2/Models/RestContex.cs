@@ -15,6 +15,7 @@ namespace App2.Models
         public DbSet<Hyarch> Hyarches { get; set; }
         public DbSet<Polozka> Polozkas { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<VAT> Dane { get; set; }
 
         private const string DatabaseFilename = "Contacts.db";
         public RestContext(string dbPath) : base()

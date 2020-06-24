@@ -24,7 +24,9 @@ namespace App2.Views
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
 
                 new HomeMenuItem{Id=MenuItemType.Stoly,Title="Stoly"},
-                new HomeMenuItem{Id=MenuItemType.Zkouska,Title="ZkouSka"}
+                new HomeMenuItem{Id=MenuItemType.Zkouska,Title="ZkouSka"},
+                new HomeMenuItem{Id=MenuItemType.CollectionTables,Title="ZkouskaCollection"},
+                new HomeMenuItem{Id=MenuItemType.Vat,Title="Daňové sazby"}
 
             };
 

@@ -14,21 +14,33 @@ namespace App2.ViewModels
         public ObservableCollection<Models.Stoly> Stolies{get;set;}
         public ZkouskaViewModel()
         {
+
             Stolies = new ObservableCollection<Models.Stoly>();
             Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-      Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 40, Obsazeno = false });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 10, Obsazeno = false });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 80, Obsazeno = false });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-           Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
-            LoadItemsCommand = new Command(async() =>await GetTask());
-        }
-     
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 40, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 10, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 80, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
 
-         async Task GetTask()
+            Polozky.AddItemAsync(new Models.Polozka { Cena = 2, Nazev = "Pivo" });
+            
+
+
+           
+
+              
+
+            LoadItemsCommand = new Command(async() =>await GetTask());
+          
+        }
+
+
+            async Task GetTask()
         {
             if (IsBusy)
                 return;

@@ -13,6 +13,8 @@ namespace App2.Models
         public int ID { get; set; }
         [Required, SQLite.MaxLength(10)]
         public string nazev { get; set; }
-        public ICollection<Item> Items { get; set; }
+        public ICollection<Polozka> Items { get; set; }
+
+        public string Image { get; set; }
     }
 }

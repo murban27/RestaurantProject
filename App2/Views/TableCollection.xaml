@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:App2.ViewModels"
+             mc:Ignorable="d"
+             x:Class="App2.Views.TableCollection">
+
+    <ContentPage.Content>
+        <StackLayout >
+            <tabview:SfTabView HorizontalOptions="FillAndExpand" Margin="0,0,0,0" BackgroundColor="#AC0A30" TabHeaderPosition="Top" SelectionChanged="SfTabView_SelectionChanged">
+                <tabview:SfTabView.Items >
+                    
+                    <tabview:SfTabItem Title="Jídlo" TitleFontColor="#DC1040" SelectionColor="PaleGreen" />
+                    <tabview:SfTabItem Title="Pití" />
+                    <tabview:SfTabItem Title="Menu" />
+             
+                
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
+
+
+            <listview:SfListView x:Name="HorizontalListview" Orientation="Horizontal" >
+                <listview:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <button:SfButton Text="Item">
+
+                        </button:SfButton>
+                    </DataTemplate>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

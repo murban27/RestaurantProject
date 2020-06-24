@@ -38,9 +38,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="AppName" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" " />
-                                <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
+                                <Span Text="Restauračí systém" FontAttributes="Bold" FontSize="22" />
+                                <Span Text=" BETA verze " FontAttributes="Bold" FontSize="Large" />
+                                <Span Text=""  ForegroundColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -49,9 +49,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This app is written in C# and native APIs using the" />
-                                <Span Text=" " />
-                                <Span Text="Xamarin Platform" FontAttributes="Bold" />
+                                <Span Text="Multiplatformní aplikace" FontSize="Body" />
+                                <Span Text="Zcela zdarma" FontSize="Body" FontAttributes="Bold"/>
+                                <Span Text="K dispozici na IOS,Android,Windows" FontAttributes="Bold" />
                                 <Span Text="." />
                             </FormattedString.Spans>
                         </FormattedString>
@@ -70,10 +70,16 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
+                <Button Margin="0,30,0,0" Text="Více produktů"
+                    
                         BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+                        TextColor="White" Clicked="Button_Clicked" />
+            </StackLayout>
+         
+        </ScrollView>
+        <ScrollView Grid.Row="2" Padding="16,40,16,40">
+            <StackLayout Margin="0,30,0,0" WidthRequest="20" >
+                <Button Text="O autorovi" TextColor="White" BackgroundColor="{StaticResource LightTextColor}"></Button>
             </StackLayout>
         </ScrollView>
     </Grid>
