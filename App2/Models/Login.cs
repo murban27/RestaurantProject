@@ -4,7 +4,8 @@ using System.Text;
 
 namespace App2.Models
 {
-    class Login
+    public class Login
     {
+
     }
 }

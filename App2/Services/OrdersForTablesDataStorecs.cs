@@ -9,10 +9,11 @@ namespace App2.Services
 {
     public class OrdersForTablesDataStorecs : IDataStore<Order>
     {
+        public RestContext RestContext { get; set; }
         public async Task<bool> AddItemAsync(Order item)
         {
-          await  App.RestContext.Orders.AddAsync(item);
-           await App.RestContext.SaveChangesAsync();
+          await  RestContext.Orders.AddAsync(item);
+           await  RestContext.SaveChangesAsync();
             return await Task.FromResult(true);
 
 
@@ -25,7 +26,7 @@ namespace App2.Services
 
         public Task<Order> GetItemAsync(Order item)
         {
-            var s = App.RestContext.Orders.Where(x => x.StulId == item.StulId).Select(x => x.Polozky);
+            var s = RestContext.Orders.Where(x => x.StulId == item.StulId).Select(x => x.Polozky);
             throw new NotImplementedException();
         }
 
@@ -40,7 +41,7 @@ namespace App2.Services
         }
         public async Task<IEnumerable<Polozka>>GetPolozkasAsync(Order item,bool forceRefresh=false)
         {
-            return  await Task.FromResult((IEnumerable<Polozka>)App.RestContext.Orders.Where(x => x.StulId == item.StulId && x.IsClosed == false).Select(y => y.Polozky).ToListAsync());
+            return  await Task.FromResult((IEnumerable<Polozka>)RestContext.Orders.Where(x => x.StulId == item.StulId && x.IsClosed == false).Select(y => y.Polozky).ToListAsync());
          
 
 

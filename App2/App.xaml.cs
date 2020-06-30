@@ -14,7 +14,7 @@ namespace App2
     public partial class App : Application
     {
         public static string BaseImageUrl { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
-        public static RestContext RestContext;
+      
         public static ResourceDictionary Keys;
         public App()
         {
@@ -25,6 +25,7 @@ namespace App2
             InitializeComponent();
             if (DesignMode.IsDesignModeEnabled)
             {
+             
                 return;
             }
             DependencyService.Register<MockDataStore>();
@@ -35,8 +36,7 @@ namespace App2
                 Directory.CreateDirectory(DBPath);
             }*/
 
-            RestContext = new RestContext("check2.db");
-            RestContext.Database.EnsureCreated();
+
 
             MainPage = new MainPage(); 
         }

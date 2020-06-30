@@ -9,30 +9,31 @@ using Microsoft.EntityFrameworkCore;
 namespace App2.Services
 {
     public class HyarchServices : IDataStore<Hyarch>
-
     {
+        RestContext RestContext;
+        
         public Task<bool> AddItemAsync(Hyarch item)
         {
-            App2.App.RestContext.Add(item);
+            RestContext.Add(item);
             return Task.FromResult(true) ;
         }
 
         public Task<bool> DeleteItemAsync(string id)
         {
-            var Item = App2.App.RestContext.Hyarches.Where(x => x.ID == int.Parse(id)).Select(x=>x).FirstOrDefault();
-              App2.App.RestContext.Remove(Item);
+            var Item = RestContext.Hyarches.Where(x => x.ID == int.Parse(id)).Select(x=>x).FirstOrDefault();
+             RestContext.Remove(Item);
                 return Task.FromResult(true);
         }
 
         public Task<Hyarch> GetItemAsync(string id)
         {
-            return Task.FromResult( App2.App.RestContext.Hyarches.Where(x => x.ID == int.Parse(id)).Select(x => x).FirstOrDefault());
+            return Task.FromResult( RestContext.Hyarches.Where(x => x.ID == int.Parse(id)).Select(x => x).FirstOrDefault());
             
         }
 
         public async Task<IEnumerable<Hyarch>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await (from s in App.RestContext.Hyarches select s).ToListAsync();
+            return await (from s in RestContext.Hyarches select s).ToListAsync();
             
 
 

@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 namespace App2.Services
 {
     public class StolyDataService : IDataStore<Stoly>
-
+        
     {
-
-        RestContext RestContext;
+        public  RestContext RestContext;
         public async Task<bool> AddItemAsync(Stoly item)
         {
         
       
-            await App.RestContext.Stolies.AddAsync(item);
-            App.RestContext.SaveChanges();
+            await RestContext.Stolies.AddAsync(item);
+           RestContext.SaveChanges();
             return await Task.FromResult(true);
         }
  
@@ -35,15 +34,15 @@ namespace App2.Services
 
         public async Task<IEnumerable<Stoly>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await App.RestContext.Stolies.ToListAsync();
+            return await RestContext.Stolies.ToListAsync();
           
 
         }
 
         public async Task<bool> UpdateItemAsync(Stoly item)
         {
-             App.RestContext.Stolies.Update(item);
-            App.RestContext.SaveChanges();
+            RestContext.Stolies.Update(item);
+           RestContext.SaveChanges();
             return await Task.FromResult(true);
         }
     }

@@ -10,9 +10,10 @@ namespace App2.Services
 {
     public class NewItem : IDataStore<Polozka>
     {
+        RestContext RestContext;
         public async Task<bool> AddItemAsync(Polozka item)
         {
-            App.RestContext.Polozkas.Add(item);
+           RestContext.Polozkas.Add(item);
             return await Task.FromResult(true);
             
         }
@@ -29,7 +30,7 @@ namespace App2.Services
 
         public async Task<IEnumerable<Polozka>> GetItemsAsync(bool forceRefresh = false)
         {
-            return await Task.FromResult((IEnumerable<Polozka>)App.RestContext.Polozkas.Select(x => x).ToListAsync());
+            return await Task.FromResult((IEnumerable<Polozka>)RestContext.Polozkas.Select(x => x).ToListAsync());
         }
 
             public async Task<bool> UpdateItemAsync(Polozka item)
