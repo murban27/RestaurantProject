@@ -5,12 +5,9 @@ xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfD
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="App2.Views.Login">
-    <ContentPage.BindingContext>
-        <viewModel>
-            
-        </viewModel>
-    </ContentPage.BindingContext>
+             x:Class="App2.Views.Login"
+             Title="Login">
+
     <ContentPage.Content>
        
         <StackLayout>
@@ -18,8 +15,7 @@ xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfD
         HeightRequest="300" 
         VerticalOptions="CenterAndExpand"
         HorizontalOptions="Center"
-                                 DataObject="1,2"
-                                 />
+                                 DataObject="{Binding Login}" />
             
 
         </StackLayout>

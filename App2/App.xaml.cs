@@ -9,6 +9,8 @@ using Syncfusion.Buttons;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Login = App2.Views.Login;
+
 namespace App2
 {
     public partial class App : Application
@@ -37,8 +39,11 @@ namespace App2
             }*/
 
 
+            MainPage = new Login();
 
-            MainPage = new MainPage(); 
+
+
+           // MainPage = new MainPage(); 
         }
 
         protected override void OnStart()
