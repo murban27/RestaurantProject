@@ -21,7 +21,7 @@ xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfD
             
             <StackLayout>
                 <Label Text="Welcome in Bar system project, please login"></Label>
-                <Image Source="" Opacity="0.6" VerticalOptions="Start" Margin="0,3,0,0"></Image>
+                <Image Source="beerlivesmatter.jpg" Opacity="0.6" VerticalOptions="Start" Margin="0,3,0,0"></Image>
             </StackLayout>
                 
         </Grid>

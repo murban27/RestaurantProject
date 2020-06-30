@@ -131,7 +131,7 @@
     <AndroidResource Include="Resources\drawable\bottle.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\beerlivesmatter.jpg">
+    <AndroidResource Include="Resources\drawable\beerlivesmatter.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidResource>
   </ItemGroup>
