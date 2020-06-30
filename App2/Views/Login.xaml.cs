@@ -20,6 +20,9 @@ namespace App2.Views
             InitializeComponent();
            
             BindingContext = viewModel = new LoginViewModel();
+            dataForm.BindingContext = viewModel.Login;
+
+
         }
     }
 }
