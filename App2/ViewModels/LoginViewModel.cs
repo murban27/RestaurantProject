@@ -1,4 +1,5 @@
 ﻿using App2.Models;
+using App2.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,9 +15,10 @@ namespace App2.ViewModels
         {
             Login login = new Login()
             {
-                UserName = "Fill UserName",
+                Login1 = "Fill UserName",
                 Password = "Fill Password"
             };
+   
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using App2.ViewModels;
+﻿using App2.Services;
+using App2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,42 @@ namespace App2.Views
         public Login()
         {
             InitializeComponent();
-           
+
             BindingContext = viewModel = new LoginViewModel();
-           
 
 
+
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Bla();
+
+        }
+
+        public async void Bla()
+        {
+            Login login = new Login();
+            login.UserName = UserName;
+            login.Password = Password;
+            AuthClient.Login = new Models.Login
+
+            {
+                Login1 = UserName.Text,
+                Password = Password.Text
+            };
+            AuthClient.SetProperties();
+            var s =await AuthClient.AuthorizationClient();
+           if(s==true)
+            {
+                Application.Current.MainPage = new MainPage();
+
+            }
+            else
+            {
+                await DisplayAlert("Wrong password", "Incorrrect password", "cancel");
+
+            }
         }
     }
 }
