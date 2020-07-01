@@ -8,8 +8,8 @@ namespace App2.ViewModels
 {
    public class TableDetailPageViewModel:BaseViewModel
     {
-        public ObservableCollection<Stoly> Stoly { get; set; }
-        public TableDetailPageViewModel(Stoly stul)
+        public ObservableCollection<StolyBackup> Stoly { get; set; }
+        public TableDetailPageViewModel(StolyBackup stul)
         {
 
         }

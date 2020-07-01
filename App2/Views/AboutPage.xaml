@@ -7,11 +7,11 @@
              x:Class="App2.Views.AboutPage"
              xmlns:vm="clr-namespace:App2.ViewModels"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
@@ -32,8 +32,8 @@
                 </ContentView>
             </StackLayout>
         </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+        <ScrollView Grid.Row="1" >
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Padding="16,40,16,40" Spacing="10">
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>
@@ -42,44 +42,16 @@
                                 <Span Text=" BETA verze " FontAttributes="Bold" FontSize="Large" />
                                 <Span Text=""  ForegroundColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
+
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Multiplatformní aplikace" FontSize="Body" />
-                                <Span Text="Zcela zdarma" FontSize="Body" FontAttributes="Bold"/>
-                                <Span Text="K dispozici na IOS,Android,Windows" FontAttributes="Bold" />
-                                <Span Text="." />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="It shares code with its" />
-                                <Span Text=" " />
-                                <Span Text="iOS, Android, and Windows" FontAttributes="Bold" />
-                                <Span Text=" " />
-                                <Span Text="versions." />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Button Margin="0,30,0,0" Text="Více produktů"
-                    
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" Clicked="Button_Clicked" />
             </StackLayout>
-         
         </ScrollView>
+
         <ScrollView Grid.Row="2" Padding="16,40,16,40">
-            <StackLayout Margin="0,30,0,0" WidthRequest="20" >
-                <Button Text="O autorovi" TextColor="White" BackgroundColor="{StaticResource LightTextColor}"></Button>
+            <StackLayout Margin="0,30,0,0"  >
+                <Button Text="Github repository" TextColor="White" BackgroundColor="{StaticResource LightTextColor}" Command="{Binding OpenWebCommand}" CommandParameter="www.idnes.cz" ></Button>
             </StackLayout>
         </ScrollView>
     </Grid>

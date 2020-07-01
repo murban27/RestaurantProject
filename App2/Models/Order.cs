@@ -15,7 +15,7 @@ namespace App2.Models
         public ICollection<Polozka> Polozky { get; set; }
         [ForeignKey("Stul")]
         public int StulId { get; set; }
-        public Stoly Stul { get; set; }
+        public StolyBackup Stul { get; set; }
         public bool IsClosed { get; set; }
 
         public DateTime CreaterTime { get; set; } = DateTime.Now;

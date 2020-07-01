@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Stoly = App2.Models.Stoly;
+using StolyBackup = App2.Models.StolyBackup;
 
 namespace App2.ViewModels
 {
@@ -16,22 +16,22 @@ namespace App2.ViewModels
     public class StolyViewModel : BaseViewModel
     {
 
-        public ObservableCollection<Stoly> Stolies { get; set; }
+        public ObservableCollection<StolyBackup> Stolies { get; set; }
         public Command LoadItemsCommand { get; set; }
         public StolyViewModel()
         {
-            Stoly s = new Stoly() {Kapacita=5,Obsazeno=true };
+            StolyBackup s = new StolyBackup() {Kapacita=5,Obsazeno=true };
 
             var a = Stolyies.AddItemAsync(s).GetAwaiter();
 
             
             Title = "Stoly";
-            Stolies = new ObservableCollection<Stoly>();
+            Stolies = new ObservableCollection<StolyBackup>();
             LoadItemsCommand = new Command(async () => await ExecLoadItemsCommand());
 
-            MessagingCenter.Subscribe<StolyNewPage,Stoly>(this,"AddTable",async(obj,item)=>
+            MessagingCenter.Subscribe<StolyNewPage,StolyBackup>(this,"AddTable",async(obj,item)=>
                 {
-                    var newItem = item as Stoly;
+                    var newItem = item as StolyBackup;
                     try
                     {
                         Stolies.Add(newItem);

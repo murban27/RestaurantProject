@@ -10,7 +10,7 @@ namespace App2.Models
     public class RestContext : DbContext
     {
 
-        public DbSet<Stoly> Stolies { get; set; }
+        public DbSet<StolyBackup> Stolies { get; set; }
 
         public DbSet<Hyarch> Hyarches { get; set; }
         public DbSet<Polozka> Polozkas { get; set; }
@@ -34,8 +34,8 @@ namespace App2.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Stoly>().HasKey(x => x.Id);
-            modelBuilder.Entity<Stoly>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<StolyBackup>().HasKey(x => x.Id);
+            modelBuilder.Entity<StolyBackup>().Property(x => x.Id).ValueGeneratedOnAdd();
             
 
         }

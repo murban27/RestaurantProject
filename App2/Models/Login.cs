@@ -8,11 +8,12 @@ namespace App2.Models
     public class Login
     {
 
-            public int id { get; set; }
-            public string Login1 { get; set; }
-            public object Password { get; set; }
-            public int idPozice { get; set; }
-            public object idPoziceNavigation { get; set; }
+        public long Id { get; set; }
+        public string Login1 { get; set; }
+        public string Password { get; set; }
+        public long IdPozice { get; set; }
+
+        public virtual Pozice IdPoziceNavigation { get; set; }
 
 
 

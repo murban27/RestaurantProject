@@ -109,7 +109,7 @@ namespace App2.Views
         {
             var Value = (SfButton)sender;
 
-         await   Navigation.PushAsync(new TableCollection(new OrderInfo((Models.Stoly)Value.BindingContext)));
+         await   Navigation.PushAsync(new TableCollection(new OrderInfo((Models.StolyBackup)Value.BindingContext)));
  
            
 

@@ -11,21 +11,21 @@ namespace App2.ViewModels
     public class ZkouskaViewModel : BaseViewModel
     {
         public Command LoadItemsCommand { get; set; }
-        public ObservableCollection<Models.Stoly> Stolies{get;set;}
+        public ObservableCollection<Models.StolyBackup> Stolies{get;set;}
         public ZkouskaViewModel()
         {
 
-            Stolies = new ObservableCollection<Models.Stoly>();
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 40, Obsazeno = false });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 10, Obsazeno = false });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 80, Obsazeno = false });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = true });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
-            Stolyies.AddItemAsync(new Models.Stoly { Kapacita = 20, Obsazeno = false });
+            Stolies = new ObservableCollection<Models.StolyBackup>();
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 40, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 10, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 80, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = true });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = false });
+            Stolyies.AddItemAsync(new Models.StolyBackup { Kapacita = 20, Obsazeno = false });
 
             Polozky.AddItemAsync(new Models.Polozka { Cena = 2, Nazev = "Pivo" });
             

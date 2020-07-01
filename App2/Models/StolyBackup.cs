@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App2.Models
 {
-    public class Stoly
+    public class StolyBackup
     {
 
         [PrimaryKey, AutoIncrement]

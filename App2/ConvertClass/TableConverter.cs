@@ -13,7 +13,7 @@ namespace App2.ConvertClass
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var val = (Stoly)value;
+            var val = (StolyBackup)value;
             if(val.Orders==null)
             {
                  return (Style)Application.Current.Resources["SfTableButtonRed"];
