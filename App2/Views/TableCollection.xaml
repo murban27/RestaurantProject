@@ -13,8 +13,8 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
              x:Class="App2.Views.TableCollection">
 
     <ContentPage.Content>
-        <StackLayout >
-            <tabview:SfTabView HorizontalOptions="FillAndExpand" Margin="0,0,0,0" BackgroundColor="#AC0A30" TabHeaderPosition="Top" SelectionChanged="SfTabView_SelectionChanged">
+        <StackLayout HorizontalOptions="StartAndExpand">
+            <tabview:SfTabView  Margin="0,0,0,0" BackgroundColor="#AC0A30" TabHeaderPosition="Top" SelectionChanged="SfTabView_SelectionChanged" VisibleHeaderCount="3">
                 <tabview:SfTabView.Items >
                     
                     <tabview:SfTabItem Title="Jídlo" TitleFontColor="#DC1040" SelectionColor="PaleGreen" />

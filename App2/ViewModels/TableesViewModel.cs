@@ -3,6 +3,7 @@ using App2.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -25,6 +26,28 @@ namespace App2.ViewModels
         public async Task GetTask()
         {
             StolyDataService stolyDataService = new StolyDataService();
+          
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            Stolies.Clear();
+            var items = await stolyDataService.GetItemsAsync(true);
+            try
+            {
+                foreach (var item in items)
+                {
+                    Stolies.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
 
         }
     }

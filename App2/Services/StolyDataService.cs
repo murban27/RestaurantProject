@@ -1,4 +1,5 @@
-﻿using App2.Views;
+﻿using App2.Models;
+using App2.Views;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -8,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace App2.Services
 {
-    public class StolyDataService : IDataStore<Stoly>
+    public class StolyDataService : IDataStore<Tables>
     {
-        public IEnumerable<Stoly> Stolies { get; set; }
+        public IEnumerable<Tables> Stolies { get; set; }
 
 
-        public async Task<bool> AddItemAsync(Stoly item)
+        public async Task<bool> AddItemAsync(Tables item)
         {
             StringContent content = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json");
            var responce = await AuthClient.Client.PostAsync("Tables", content);
@@ -43,13 +44,13 @@ namespace App2.Services
             }
         }
 
-        public async Task<Stoly> GetItemAsync(string id)
+        public async Task<Tables> GetItemAsync(string id)
         {
             
             var responce = await AuthClient.Client.GetAsync(string.Format($"Tables/{id}"));
             if (responce.IsSuccessStatusCode)
             {
-                var zdar = JsonSerializer.Deserialize<Stoly>(await responce.Content.ReadAsStringAsync());
+                var zdar = JsonSerializer.Deserialize<Tables>(await responce.Content.ReadAsStringAsync());
                 return zdar;
             }
             else
@@ -58,28 +59,15 @@ namespace App2.Services
             }
         }
 
-        public async Task<IEnumerable<Stoly>> GetItemsAsync(bool forceRefresh = false)
-        {
-            var responce = await AuthClient.Client.GetAsync(string.Format($"Tables"));
-            if (responce.IsSuccessStatusCode)
-            {
-                var zdar = (IEnumerable<Stoly>)JsonSerializer.Deserialize<Stoly>(await responce.Content.ReadAsStringAsync());
-                return zdar;
-            }
-            else
-            {
-                throw new Exception("Something very wrong happened");
-            }
-        }
 
-        public async Task<bool> UpdateItemAsync(Stoly stul)
+        public async Task<bool> UpdateItemAsync(Tables stul)
         {
             string Id = stul.Id.ToString();
             StringContent content = new StringContent(JsonSerializer.Serialize(stul), Encoding.UTF8, "application/json");
             HttpResponseMessage httpResponseMessage= await AuthClient.Client.PutAsync(string.Format($"Tables/{Id}"),content);
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                var zdar = (IEnumerable<Stoly>)JsonSerializer.Deserialize<Stoly>(await httpResponseMessage.Content.ReadAsStringAsync());
+                var zdar = (IEnumerable<Tables>)JsonSerializer.Deserialize<Stoly>(await httpResponseMessage.Content.ReadAsStringAsync());
                 return await Task.FromResult(httpResponseMessage.IsSuccessStatusCode);
 
             }
@@ -88,5 +76,19 @@ namespace App2.Services
                 return await Task.FromResult(httpResponseMessage.IsSuccessStatusCode);
             }
         }
+
+         public async  Task<IEnumerable<Tables>> GetItemsAsync (bool forceRefresh)
+        {
+            var responce = await AuthClient.Client.GetAsync(string.Format($"Tables"));
+            if (responce.IsSuccessStatusCode)
+            {
+                var zdar = (IEnumerable<Tables>)JsonSerializer.Deserialize<Stoly>(await responce.Content.ReadAsStringAsync());
+                return zdar;
+            }
+            else
+            {
+
+                throw new Exception("Something very wrong happened");
+            }
     }
 }
