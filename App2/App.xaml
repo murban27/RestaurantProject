@@ -30,7 +30,10 @@
             <Style TargetType="Frame" x:Key="TableFrame">
                 <Setter Property="BackgroundColor" Value="#226765"></Setter>
             </Style>
+          
+         
            
+
         </ResourceDictionary>
     </Application.Resources>
     

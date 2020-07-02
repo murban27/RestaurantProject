@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace App2.Models
 {
-   public  class Tables
+    public class Tables
     {
 
-        public long Id { get; set; }
-        public int? Capacity { get; set; }
-        public bool? IsAvailable { get; set; }
+            public int id { get; set; }
+            public int capacity { get; set; }
+            public bool isAvailable { get; set; }
+            public ObservableCollection<Orders> orders { get; set; }
+        }
 
-        public virtual ICollection<Orders> Orders { get; set; }
+
     }
-}
+

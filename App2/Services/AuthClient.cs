@@ -39,6 +39,7 @@ namespace App2.Services
 
                 var zdar = JsonSerializer.Deserialize<Login>(await responce.Content.ReadAsStringAsync());
                 zdar.Password = Login.Password;
+                zdar.Login1 = Login.Login1;
                 Login = zdar;
                 return true;
                

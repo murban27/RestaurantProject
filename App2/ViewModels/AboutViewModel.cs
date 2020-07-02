@@ -12,7 +12,7 @@ namespace App2.ViewModels
         {
             Title = "About";
 
-          OpenWebCommand = new Command(() => Launcher.OpenAsync(new Uri("www.vspj.cz")));
+          OpenWebCommand = new Command(() => Launcher.OpenAsync(new Uri("https://github.com/murban27/RestSchoolProject")));
 
         }
 

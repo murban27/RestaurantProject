@@ -1,42 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:App2.ConvertClass"
              mc:Ignorable="d"
-             x:Class="App2.Views.Zkouska"
-             >
-    <ContentPage.Content >
+             x:Class="App2.Views.Zkouska" Title="Stoly">
 
-        <StackLayout x:Name="Layout">
-            <Frame  x:Name="AHoj" BackgroundColor ="#226765">
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-
-
-
-                    <button:SfButton BackgroundColor="Red" Text="3" HorizontalOptions="FillAndExpand">
-                    </button:SfButton>
-
-
-                    <button:SfButton BackgroundColor="Green" Text="2" HorizontalOptions="FillAndExpand" >
-                    </button:SfButton>
-
-                    <button:SfButton BackgroundColor="Yellow" Text="1" HorizontalOptions="FillAndExpand">
-                    </button:SfButton>
+        <ContentPage.Resources>
+        <local:CellStyleConverter x:Key="customStyle">
+        </local:CellStyleConverter>
+        </ContentPage.Resources>
+        
+        <ContentPage.Content >
 
 
 
-
-                </StackLayout>
-            </Frame>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
 
 
-            <Label Text="WEwewesds!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <datagrid:SfDataGrid BackgroundColor="#226765"
+            ItemsSource="{Binding Stolies}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false" >
+                <datagrid:SfDataGrid.Columns>
+                    <datagrid:GridTextColumn HeaderText="Číslo stolu" MappingName="Id" ColumnSizer="Star" >
+                        <datagrid:GridTextColumn.CellStyle>
+                            <Style TargetType="datagrid:GridCell">
+                                <Setter Property="BackgroundColor" Value="{Binding Converter={StaticResource customStyle}}">
+
+                                </Setter>
+                            </Style>
+                        </datagrid:GridTextColumn.CellStyle>
+                    </datagrid:GridTextColumn>
+                 <datagrid:GridTextColumn HeaderText="Kapacita stolu"  MappingName="capacity" ColumnSizer="LastColumnFill"/>
+                </datagrid:SfDataGrid.Columns>
+            </datagrid:SfDataGrid>
+            
+
+
+
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

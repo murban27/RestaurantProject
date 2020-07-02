@@ -2,6 +2,8 @@
 using App2.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -11,18 +13,18 @@ namespace App2.Services
 {
     public class StolyDataService : IDataStore<Tables>
     {
-        public IEnumerable<Tables> Stolies { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Tables> Stolies { get; set; }
 
 
         public async Task<bool> AddItemAsync(Tables item)
         {
             StringContent content = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json");
-           var responce = await AuthClient.Client.PostAsync("Tables", content);
+            var responce = await AuthClient.Client.PostAsync("Tables", content);
             if (responce.IsSuccessStatusCode)
             {
-       
+
                 return await Task.FromResult(true);
-                
+
             }
             else
             {
@@ -32,7 +34,7 @@ namespace App2.Services
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-           
+
             var responce = await AuthClient.Client.DeleteAsync(string.Format($"Tables/{id}"));
             if (responce.IsSuccessStatusCode)
             {
@@ -46,7 +48,7 @@ namespace App2.Services
 
         public async Task<Tables> GetItemAsync(string id)
         {
-            
+
             var responce = await AuthClient.Client.GetAsync(string.Format($"Tables/{id}"));
             if (responce.IsSuccessStatusCode)
             {
@@ -62,12 +64,12 @@ namespace App2.Services
 
         public async Task<bool> UpdateItemAsync(Tables stul)
         {
-            string Id = stul.Id.ToString();
+            string Id = stul.id.ToString();
             StringContent content = new StringContent(JsonSerializer.Serialize(stul), Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponseMessage= await AuthClient.Client.PutAsync(string.Format($"Tables/{Id}"),content);
+            HttpResponseMessage httpResponseMessage = await AuthClient.Client.PutAsync(string.Format($"Tables/{Id}"), content);
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                var zdar = (IEnumerable<Tables>)JsonSerializer.Deserialize<Stoly>(await httpResponseMessage.Content.ReadAsStringAsync());
+                var zdar = (ObservableCollection<Tables>)JsonSerializer.Deserialize<ObservableCollection<Tables>>(await httpResponseMessage.Content.ReadAsStringAsync());
                 return await Task.FromResult(httpResponseMessage.IsSuccessStatusCode);
 
             }
@@ -77,18 +79,32 @@ namespace App2.Services
             }
         }
 
-         public async  Task<IEnumerable<Tables>> GetItemsAsync (bool forceRefresh)
+        public async Task<IEnumerable<Tables>> GetItemsAsync(bool forceRefresh)
         {
-            var responce = await AuthClient.Client.GetAsync(string.Format($"Tables"));
-            if (responce.IsSuccessStatusCode)
+            try
             {
-                var zdar = (IEnumerable<Tables>)JsonSerializer.Deserialize<Stoly>(await responce.Content.ReadAsStringAsync());
-                return zdar;
-            }
-            else
-            {
+                var responce = await AuthClient.Client.GetAsync(string.Format($"Tables"));
+                if (responce.IsSuccessStatusCode)
+                {
+                    var zdar = await responce.Content.ReadAsStringAsync();
+                   var pockat = zdar;
 
-                throw new Exception("Something very wrong happened");
+                    var ahoj = JsonSerializer.Deserialize<IEnumerable<Tables>>(await responce.Content.ReadAsStringAsync());
+                    return ahoj;
+                }
+                else
+     
+                {
+                    var s = responce.StatusCode;
+                    throw new Exception("Something very wrong happened");
+                }
             }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                throw new Exception(e.Message);
+            }
+        }
+
     }
 }

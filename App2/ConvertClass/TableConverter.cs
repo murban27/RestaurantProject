@@ -1,4 +1,5 @@
 ﻿using App2.Models;
+using App2.Views;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,12 +14,12 @@ namespace App2.ConvertClass
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var val = (StolyBackup)value;
-            if(val.Orders==null)
+            var val = (Tables)value;
+            if(val.isAvailable==false)
             {
                  return (Style)Application.Current.Resources["SfTableButtonRed"];
             }
-            switch ((from s in val.Orders where s.IsClosed!=true select s.Id).Count()>0)
+            switch ((from s in val.orders where s.orderDetail!=null select s.id).Count()>0)
             {
                 case true:
                     return (Style)Application.Current.Resources["SfTableButtonGreen"];

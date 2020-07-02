@@ -10,8 +10,6 @@
     <MasterDetailPage.Master>
         <views:MenuPage />
     </MasterDetailPage.Master>
-    
-
     <MasterDetailPage.Detail>
 
         <NavigationPage>
@@ -22,7 +20,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:Zkouska />
             </x:Arguments>
         </NavigationPage>
        
