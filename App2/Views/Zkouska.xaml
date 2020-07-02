@@ -21,7 +21,7 @@ xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.S
 
 
             <datagrid:SfDataGrid BackgroundColor="#226765"
-            ItemsSource="{Binding Stolies}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false" >
+            ItemsSource="{Binding Stolies}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false" AllowPullToRefresh="True" PullToRefreshCommand="{Binding LoadItemsCommand}" >
                 <datagrid:SfDataGrid.Columns>
                     <datagrid:GridTextColumn HeaderText="Číslo stolu" MappingName="Id" ColumnSizer="Star" >
                         <datagrid:GridTextColumn.CellStyle>
