@@ -21,8 +21,9 @@ namespace App2.Views
 
             Item = new Item
             {
+                /*
                 Text = "Item name",
-                Description = "This is an item description."
+                Description = "This is an item description."*/
             };
 
             BindingContext = this;

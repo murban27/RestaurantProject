@@ -30,7 +30,6 @@ namespace App2
              
                 return;
             }
-            DependencyService.Register<MockDataStore>();
             DependencyService.Register<StolyBackupDataService>();
             /*var DBPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "Rest.db");
             if(!Directory.Exists(DBPath))

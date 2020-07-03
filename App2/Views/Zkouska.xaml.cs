@@ -15,6 +15,8 @@ using System.Windows.Input;
 using Syncfusion.XForms.Border;
 using Syncfusion.XForms.TabView;
 using Java.Lang;
+using Syncfusion.SfDataGrid.XForms;
+using App2.Models;
 
 namespace App2.Views
 {
@@ -42,6 +44,12 @@ namespace App2.Views
 
         }
 
+        private void SfDataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
+        {
+         var s= (Tables)SfGrid.SelectedItem;
+            Navigation.PushAsync(new TableCollection(s));
+
+        }
     }
 }
 

@@ -27,9 +27,9 @@ namespace App2.Views
             InitializeComponent();
 
             var item = new Item
-            {
+            {/*
                 Text = "Item 1",
-                Description = "This is an item description."
+                Description = "This is an item description."*/
             };
 
             viewModel = new ItemDetailViewModel(item);

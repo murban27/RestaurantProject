@@ -14,27 +14,21 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="StartAndExpand">
-            <tabview:SfTabView  Margin="0,0,0,0" BackgroundColor="#AC0A30" TabHeaderPosition="Top" SelectionChanged="SfTabView_SelectionChanged" VisibleHeaderCount="3">
-                <tabview:SfTabView.Items >
+            <tabview:SfTabView  BindingContext="{Binding Sekces}" Margin="0,0,0,0" BackgroundColor="#AC0A30"  TabHeaderPosition="Top" SelectionChanged="SfTabView_SelectionChanged" VisibleHeaderCount="1">
+                <tabview:TabItemCollection>
                     
-                    <tabview:SfTabItem Title="Jídlo" TitleFontColor="#DC1040" SelectionColor="PaleGreen" />
-                    <tabview:SfTabItem Title="Pití" />
-                    <tabview:SfTabItem Title="Menu" />
-             
-                
-                </tabview:SfTabView.Items>
+                    <tabview:SfTabItem  TitleFontColor="#DC1040" SelectionColor="PaleGreen" Title="{Binding name}"/>
+                </tabview:TabItemCollection>
             </tabview:SfTabView>
-
-
-            <listview:SfListView x:Name="HorizontalListview" Orientation="Horizontal" >
-                <listview:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <button:SfButton Text="Item">
-
-                        </button:SfButton>
+            <ListView ItemsSource="{Binding Sekces}">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <TextCell Text="{Binding name}"></TextCell>
                     </DataTemplate>
-                </listview:SfListView.ItemTemplate>
-            </listview:SfListView>
+                </ListView.ItemTemplate>
+            </ListView>
+
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
