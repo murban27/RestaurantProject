@@ -40,7 +40,7 @@ namespace App2.ViewModels
         }
 
 
-            async Task GetTask()
+           public async Task GetTask()
         {
             if (IsBusy)
                 return;

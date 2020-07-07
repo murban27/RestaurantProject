@@ -13,7 +13,7 @@ namespace App2.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<StolyBackup> Stolyies => DependencyService.Get<IDataStore<StolyBackup>>() ?? new StolyBackupDataService();
-        public IDataStore<Order> Orders => DependencyService.Get<IDataStore<Order>>() ?? new OrdersForTablesDataStorecs();
+        public IDataStore<Orders> Orders => DependencyService.Get<IDataStore<Orders>>() ?? new OrderInfoServices();
         public IDataStore<Polozka> Polozky => DependencyService.Get<IDataStore<Polozka>>() ?? new NewItem();
         public IDataStore<VAT> VAT => DependencyService.Get<IDataStore<VAT>>() ?? new VatServices();
         bool isBusy = false;

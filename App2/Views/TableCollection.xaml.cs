@@ -17,25 +17,29 @@ namespace App2.Views
         OrderInfoViewModel viewmModel;
         public TableCollection(Tables tables)
         {
-            InitializeComponent();
+
             BindingContext = this.viewmModel = new OrderInfoViewModel(tables);
+            viewmModel.CreateTabs();
+
+            InitializeComponent();
 
 
+
+
+
+        }
        
-
-
-        }
-        protected override void OnAppearing()
+      async  protected override void OnAppearing()
         {
-            base.OnAppearing();
-            if(viewmModel.Sekces.Count==0)
-            {
-                viewmModel.LoadItemsCommand.Execute(null);
-            }
+          
+            if (viewmModel.Sekces.Count<1)
             {
 
+                await viewmModel.GetOrderDetail();
             }
+           
         }
+      
 
         private void SfTabView_TabItemTapped(object sender, Syncfusion.XForms.TabView.TabItemTappedEventArgs e)
         {

@@ -13,22 +13,14 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
              x:Class="App2.Views.TableCollection">
 
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="StartAndExpand">
-            <tabview:SfTabView  BindingContext="{Binding Sekces}" Margin="0,0,0,0" BackgroundColor="#AC0A30"  TabHeaderPosition="Top" SelectionChanged="SfTabView_SelectionChanged" VisibleHeaderCount="1">
-                <tabview:TabItemCollection>
-                    
-                    <tabview:SfTabItem  TitleFontColor="#DC1040" SelectionColor="PaleGreen" Title="{Binding name}"/>
-                </tabview:TabItemCollection>
-            </tabview:SfTabView>
-            <ListView ItemsSource="{Binding Sekces}">
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <TextCell Text="{Binding name}"></TextCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
 
-           
-        </StackLayout>
+        <listview:SfListView ItemsSource="{Binding }">
+            
+        </listview:SfListView>
+
+
     </ContentPage.Content>
+    <StackLayout>
+        
+    </StackLayout>
 </ContentPage>

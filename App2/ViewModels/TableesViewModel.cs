@@ -39,6 +39,7 @@ namespace App2.ViewModels
                 {
                     Stolies.Add(item);
                 }
+               
             }
             catch (Exception ex)
             {

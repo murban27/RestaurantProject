@@ -17,7 +17,7 @@ namespace App2.Models
         public int Kapacita { get; set; }
         [DefaultValue(false)]
         public bool Obsazeno { get; set; }
-        public ICollection<Order>Orders { get; set; }
+        public ICollection<Orders>Orders { get; set; }
     
 
     }
