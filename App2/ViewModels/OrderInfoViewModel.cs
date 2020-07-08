@@ -16,14 +16,17 @@ namespace App2.ViewModels
    public class OrderInfoViewModel:BaseViewModel
     {
         public Xamarin.Forms.Command LoadItemsCommand { get; set; }
+        public Xamarin.Forms.Command LoadPolozkasCommand { get; set; }
 
-        public ObservableCollection<Models.Polozka> Polozkas { get; set; }
+
+        public ObservableCollection<Models.Items> Polozkas { get; set; }
         public ObservableCollection<Sekce> Sekces { get; set; }
         public ObservableCollection<Orders> Orders { get; set; }
         public TabItemCollection Items { get; set; }
 
         public SekcesService sekcesService { get; set; }
         public OrderInfoServices OrderInfoServices { get; set; }
+        public PolozkasService PolozkasService { get; set; }
         public Tables Table { get; set; }
         public OrderInfoViewModel(Tables table=null)
 
@@ -33,9 +36,27 @@ namespace App2.ViewModels
             // Order = table.Orders.FirstOrDefault();
             Sekces = new ObservableCollection<Sekce>();
             Orders = new ObservableCollection<Orders>();
+            Items = new TabItemCollection();
+            Polozkas = new ObservableCollection<Items>();
                 LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetOrderDetail());
 
         }
+        public async Task GetPolozkas()
+        {
+            if (IsBusy)
+                return;
+            IsBusy = true;
+            OrderInfoServices = new OrderInfoServices();
+            var s = await PolozkasService.GetItemsAsync();
+             foreach (var item in s)
+            {
+                Polozkas.Add(item);
+            }
+
+            IsBusy = false;
+        }
+
+    
           public  async Task GetOrderDetail()
         {
             if (Table == null)
@@ -63,22 +84,31 @@ namespace App2.ViewModels
 
         }
 
-        public void CreateTabs()
+        public void Sekce()
         {
             sekcesService = new SekcesService();
             var result = Task.Run(async () => await sekcesService.GetItemsAsync()).Result;
 
 
 
-            Items = new TabItemCollection();
+       
             foreach (var item in result)
             {
-                Items.Add(new SfTabItem() { Title = item.name });
+                Sekces.Add(item);
+
 
             }
+            AddSfTabItems();
 
 
 
+        }
+        public void AddSfTabItems()
+        {
+            foreach (var item in Sekces)
+            {
+                Items.Add(new SfTabItem() { Title = item.name });
+            }
         }
 
 

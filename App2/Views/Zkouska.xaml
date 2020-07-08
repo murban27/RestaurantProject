@@ -20,7 +20,7 @@ xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.S
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
 
 
-            <datagrid:SfDataGrid x:Name="SfGrid" BackgroundColor="#226765 "
+            <datagrid:SfDataGrid x:Name="SfGrid" BackgroundColor="#226765"
             ItemsSource="{Binding Stolies}" GridDoubleTapped="SfDataGrid_GridDoubleTapped" SelectionMode="Single" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false" AllowPullToRefresh="True" PullToRefreshCommand="{Binding LoadItemsCommand}" >
                 <datagrid:SfDataGrid.Columns>
                     <datagrid:GridTextColumn HeaderText="Číslo stolu" MappingName="Id" ColumnSizer="Star" >

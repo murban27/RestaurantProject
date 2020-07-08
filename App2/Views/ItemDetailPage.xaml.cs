@@ -26,7 +26,7 @@ namespace App2.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Items
             {/*
                 Text = "Item 1",
                 Description = "This is an item description."*/

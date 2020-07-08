@@ -9,7 +9,7 @@ namespace App2.Models
 
             public int id { get; set; }
             public string name { get; set; }
-            public IEnumerable<Item> item { get; set; }
+            public IEnumerable<Items> item { get; set; }
 
     }
 }

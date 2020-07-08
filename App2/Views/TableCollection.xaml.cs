@@ -19,7 +19,7 @@ namespace App2.Views
         {
 
             BindingContext = this.viewmModel = new OrderInfoViewModel(tables);
-            viewmModel.CreateTabs();
+            viewmModel.Sekce();
 
             InitializeComponent();
 
@@ -32,11 +32,9 @@ namespace App2.Views
       async  protected override void OnAppearing()
         {
           
-            if (viewmModel.Sekces.Count<1)
-            {
 
                 await viewmModel.GetOrderDetail();
-            }
+            
            
         }
       

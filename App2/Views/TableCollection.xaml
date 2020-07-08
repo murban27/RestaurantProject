@@ -12,15 +12,25 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
              mc:Ignorable="d"
              x:Class="App2.Views.TableCollection">
 
-    <ContentPage.Content>
-
-        <listview:SfListView ItemsSource="{Binding }">
-            
-        </listview:SfListView>
-
-
-    </ContentPage.Content>
     <StackLayout>
-        
+        <tabview:SfTabView Items="{Binding Items}" TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" TabHeaderPosition="Top" TabHeight="50">
+
+        </tabview:SfTabView>
+        <datagrid:SfDataGrid x:Name="SfGrid" BackgroundColor="#226765"
+            ItemsSource="{Binding Orders}" SelectionMode="Single" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  PullToRefreshCommand="{Binding LoadItemsCommand}" >
+            <datagrid:SfDataGrid.Columns>
+                <datagrid:GridNumericColumn HeaderText="Číslo stolu" MappingName="Id" ColumnSizer="Star" >
+   
+                </datagrid:GridNumericColumn>
+                <datagrid:GridTextColumn HeaderText="Kapacita stolu"  MappingName="capacity" ColumnSizer="LastColumnFill"/>
+            </datagrid:SfDataGrid.Columns>
+        </datagrid:SfDataGrid>
+
+
+
+        <StackLayout>
+
+    </StackLayout>
     </StackLayout>
 </ContentPage>
+    
