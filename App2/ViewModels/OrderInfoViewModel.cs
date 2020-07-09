@@ -46,7 +46,8 @@ namespace App2.ViewModels
             if (IsBusy)
                 return;
             IsBusy = true;
-            OrderInfoServices = new OrderInfoServices();
+            PolozkasService = new PolozkasService();
+            Polozkas.Clear();
             var s = await PolozkasService.GetItemsAsync();
              foreach (var item in s)
             {
@@ -69,6 +70,7 @@ namespace App2.ViewModels
                     return;
                 IsBusy = true;
                 OrderInfoServices = new OrderInfoServices();
+                Orders.Clear();
                 var s = await OrderInfoServices.GetItemAsync(Table.orders[0].id.ToString());
 
                 if (s != null)

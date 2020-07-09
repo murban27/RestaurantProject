@@ -17,12 +17,12 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
 
         </tabview:SfTabView>
         <datagrid:SfDataGrid x:Name="SfGrid" BackgroundColor="#226765"
-            ItemsSource="{Binding Orders}" SelectionMode="Single" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  PullToRefreshCommand="{Binding LoadItemsCommand}" >
+            ItemsSource="{Binding Polozkas}" SelectionMode="Single" VerticalOptions="StartAndExpand" HorizontalOptions="Start" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  PullToRefreshCommand="{Binding LoadItemsCommand}" >
             <datagrid:SfDataGrid.Columns>
-                <datagrid:GridNumericColumn HeaderText="Číslo stolu" MappingName="Id" ColumnSizer="Star" >
+                <datagrid:GridTextColumn HeaderText="Položka" MappingName="name" ColumnSizer="Star" >
    
-                </datagrid:GridNumericColumn>
-                <datagrid:GridTextColumn HeaderText="Kapacita stolu"  MappingName="capacity" ColumnSizer="LastColumnFill"/>
+                </datagrid:GridTextColumn>
+                <datagrid:GridNumericColumn HeaderText="Cena"  MappingName="price" ColumnSizer="LastColumnFill"/>
             </datagrid:SfDataGrid.Columns>
         </datagrid:SfDataGrid>
 

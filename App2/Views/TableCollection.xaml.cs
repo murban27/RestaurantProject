@@ -34,7 +34,7 @@ namespace App2.Views
           
 
                 await viewmModel.GetOrderDetail();
-            
+            await viewmModel.GetPolozkas();
            
         }
       
