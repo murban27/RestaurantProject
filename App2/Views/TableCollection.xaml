@@ -22,7 +22,15 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
                 <datagrid:GridTextColumn HeaderText="Položka" MappingName="name" ColumnSizer="Star" >
    
                 </datagrid:GridTextColumn>
-                <datagrid:GridNumericColumn HeaderText="Cena"  MappingName="price" ColumnSizer="LastColumnFill"/>
+                <datagrid:GridNumericColumn HeaderText="Cena"  MappingName="price" ColumnSizer="SizeToHeader"/>
+                <datagrid:GridTemplateColumn HeaderText="Přidat do objednávky" ColumnSizer="LastColumnFill">
+                    <datagrid:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button ImageSource="ic_launcher.png"></Button>
+                        </DataTemplate>
+                    </datagrid:GridTemplateColumn.CellTemplate>
+                </datagrid:GridTemplateColumn>
+                                             
             </datagrid:SfDataGrid.Columns>
         </datagrid:SfDataGrid>
 
