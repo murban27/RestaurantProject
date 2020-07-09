@@ -26,7 +26,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
                 <datagrid:GridTemplateColumn HeaderText="Přidat do objednávky" ColumnSizer="LastColumnFill">
                     <datagrid:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button ImageSource="ic_launcher.png"></Button>
+                            <Button Text="Přidej"></Button>
                         </DataTemplate>
                     </datagrid:GridTemplateColumn.CellTemplate>
                 </datagrid:GridTemplateColumn>
