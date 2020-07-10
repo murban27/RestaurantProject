@@ -13,7 +13,7 @@ using StolyBackup = App2.Models.StolyBackup;
 
 namespace App2.ViewModels
 {
-   public class OrderInfoViewModel:BaseViewModel
+    public class OrderInfoViewModel : BaseViewModel
     {
         public Xamarin.Forms.Command LoadItemsCommand { get; set; }
         public Xamarin.Forms.Command LoadPolozkasCommand { get; set; }
@@ -28,6 +28,7 @@ namespace App2.ViewModels
         public OrderInfoServices OrderInfoServices { get; set; }
         public PolozkasService PolozkasService { get; set; }
         public Tables Table { get; set; }
+        public ObservableCollection<OrderDetail> OrderDetails { get; set; }
         public OrderInfoViewModel(Tables table=null)
 
         {
@@ -38,6 +39,7 @@ namespace App2.ViewModels
             Orders = new ObservableCollection<Orders>();
             Items = new TabItemCollection();
             Polozkas = new ObservableCollection<Items>();
+            OrderDetails = new ObservableCollection<OrderDetail>();
                 LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetOrderDetail());
 
         }
@@ -102,6 +104,27 @@ namespace App2.ViewModels
                     Orders.Add(s);
                 }
 
+
+
+
+
+
+
+                //Přidá cenu a název do kolekce
+                foreach (var item in Orders[0].orderDetail)
+                {
+                var query = (from f in Orders[0].orderDetail
+                             join k in Polozkas on f.itemId equals k.itemId
+                             where k.itemId == item.itemId && item.orderId == f.orderId
+                             select new { Price = k.price, Name = k.name }).FirstOrDefault();
+                item.Price = query.Price;
+                item.ItemName = query.Name;
+                    OrderDetails.Add(item);
+
+                }
+                
+
+                   
                 IsBusy = false;
             }
 

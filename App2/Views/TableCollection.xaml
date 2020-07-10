@@ -12,12 +12,13 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
              mc:Ignorable="d"
              x:Class="App2.Views.TableCollection">
 
-    <StackLayout>
-        <tabview:SfTabView Items="{Binding Items}" SelectionChanged="SfTabView_SelectionChanged" TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" TabHeaderPosition="Top" TabHeight="50">
+    <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#672255">
+        <tabview:SfTabView Items="{Binding Items}" VerticalOptions="Center" SelectionChanged="SfTabView_SelectionChanged" TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" HeightRequest="30" TabHeaderPosition="Top" >
 
-        </tabview:SfTabView>
-        <datagrid:SfDataGrid x:Name="SfGrid" BackgroundColor="#226765"
-            ItemsSource="{Binding Polozkas}" SelectionMode="Single" VerticalOptions="StartAndExpand" HorizontalOptions="Start" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  PullToRefreshCommand="{Binding LoadItemsCommand}" >
+            </tabview:SfTabView>
+     
+        <datagrid:SfDataGrid x:Name="SfGrid" HorizontalOptions="FillAndExpand" BackgroundColor="#672255"
+            ItemsSource="{Binding Polozkas}" SelectionMode="Single" VerticalOverScrollMode="None" AllowDiagonalScrolling="False" VerticalOptions="Start" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  PullToRefreshCommand="{Binding LoadItemsCommand}" Padding="0,10" RowHeaderWidth="5" HeaderRowHeight="15" Margin="0,10">
             <datagrid:SfDataGrid.Columns >
                 <datagrid:GridTextColumn  HeaderText="Položka" MappingName="name" ColumnSizer="Star" >
    
@@ -34,11 +35,16 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
             </datagrid:SfDataGrid.Columns>
         </datagrid:SfDataGrid>
 
-
-
+        <Label FontSize="Large" HorizontalOptions="Center" BackgroundColor="WhiteSmoke" Text="Objednané položky"></Label>
+        <StackLayout HeightRequest="13" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <datagrid:SfDataGrid 
+                ItemsSource="{Binding OrderDetails}" AutoGenerateColumns="True" >
+            </datagrid:SfDataGrid>
+          
+        </StackLayout>
         <StackLayout>
-
-    </StackLayout>
+            <Button Text="Test"></Button>
+            </StackLayout>
     </StackLayout>
 </ContentPage>
     

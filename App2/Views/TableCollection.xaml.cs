@@ -29,13 +29,13 @@ namespace App2.Views
 
 
         }
-       
+       //Načti kolekce
       async  protected override void OnAppearing()
         {
-          
-
-                await viewmModel.GetOrderDetail();
+            
             await viewmModel.GetPolozkas();
+            await viewmModel.GetOrderDetail();
+           
            
         }
       
