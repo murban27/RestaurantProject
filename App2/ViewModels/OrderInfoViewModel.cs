@@ -56,7 +56,30 @@ namespace App2.ViewModels
 
             IsBusy = false;
         }
+        /// <summary>
+        /// Vytvoří objednávku
+        /// </summary>
+        /// <returns></returns>
+        public async Task CreateOrder()
+        {
 
+        }
+        /// <summary>
+        /// Updatuje objednávku
+        /// </summary>
+        /// <returns></returns>
+        public async Task PutOrder()
+        {
+
+        }
+        /// <summary>
+        /// Ukončí objednávku
+        /// </summary>
+        /// <returns></returns>
+        public async Task EndOrder()
+        {
+
+        }
     
           public  async Task GetOrderDetail()
         {

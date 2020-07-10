@@ -3,6 +3,7 @@ using App2.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -11,9 +12,14 @@ namespace App2.Services
 {
     public class OrderInfoServices : IDataStore<Orders>
     {
-        public Task<bool> AddItemAsync(Orders item)
-        {
-            throw new NotImplementedException();
+        public async Task<bool> AddItemAsync(Orders item)
+        { 
+
+            StringContent content = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json");
+            var responce = await AuthClient.Client.PostAsync(string.Format($"Orders"),content);
+
+            
+  
         }
 
         public Task<bool> DeleteItemAsync(string id)

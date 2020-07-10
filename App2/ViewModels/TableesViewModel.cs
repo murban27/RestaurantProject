@@ -14,13 +14,33 @@ namespace App2.ViewModels
    public class TableesViewModel:BaseViewModel
     {
         public Xamarin.Forms.Command LoadItemsCommand { get; set; }
+        public Xamarin.Forms.Command PutItemsCommand { get; set; }
         public ObservableCollection<Models.Tables> Stolies { get; set; }
+        public Tables Stul { get; set; }
 
         public TableesViewModel()
         {
             Stolies = new ObservableCollection<Models.Tables>();
-
+            PutItemsCommand = new Xamarin.Forms.Command(async () => await PutTask(Stul));
             LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetTask());
+        }
+
+        public async Task PutTask(Tables table)
+        {
+           
+                StolyDataService stolyDataService = new StolyDataService();
+
+                if (IsBusy)
+                    return;
+
+                IsBusy = true;
+                Stolies.Clear();
+                table.isAvailable = false;
+              var result=  await stolyDataService.UpdateItemAsync(table);
+
+            IsBusy = false;
+
+
         }
 
         public async Task GetTask()

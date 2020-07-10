@@ -47,6 +47,12 @@ namespace App2.Views
         private void SfDataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
         {
          var s= (Tables)SfGrid.SelectedItem;
+            if(s.isAvailable==true)
+            {
+                s.isAvailable = true;
+                viewModel.Put(s);
+
+            }
             Navigation.PushAsync(new TableCollection(s));
 
         }
