@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -11,9 +12,19 @@ namespace App2.ViewModels
         {
             Title = "About";
 
-            OpenWebCommand = new Command(() => Launcher.OpenAsync(new Uri("https://xamarin.com/platform")));
+          OpenWebCommand = new Command(() => Launcher.OpenAsync(new Uri("https://github.com/murban27/RestSchoolProject")));
+
         }
 
-        public ICommand OpenWebCommand { get; }
+        public ICommand OpenWebCommand { get; set; }
+
+        public async Task<bool> OpenWebSite(string website)
+        {
+            OpenWebCommand = new Command(async () =>await Launcher.OpenAsync(new Uri(website)));
+            return await Task.FromResult(true);
+            
+
+
+        }
     }
 }

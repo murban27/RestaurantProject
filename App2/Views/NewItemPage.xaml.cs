@@ -13,16 +13,17 @@ namespace App2.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Items Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Items
             {
+                /*
                 Text = "Item name",
-                Description = "This is an item description."
+                Description = "This is an item description."*/
             };
 
             BindingContext = this;

@@ -12,6 +12,11 @@ using System.Diagnostics;
 using App2.ConvertClass;
 using System.Globalization;
 using System.Windows.Input;
+using Syncfusion.XForms.Border;
+using Syncfusion.XForms.TabView;
+using Java.Lang;
+using Syncfusion.SfDataGrid.XForms;
+using App2.Models;
 
 namespace App2.Views
 {
@@ -19,74 +24,40 @@ namespace App2.Views
     public partial class Zkouska : ContentPage
     {
 
-        public ZkouskaViewModel viewModel;
+        public TableesViewModel viewModel;
         public Zkouska()
         {
-            TableConverter tableCo = new TableConverter();
-
-            viewModel = new ZkouskaViewModel();
-            viewModel.LoadItemsCommand.Execute(null);
-
-
-            SfButton[] sfButtons = new SfButton[viewModel.Stolies.Count];
-            int counter = 0;
-            foreach (var item in viewModel.Stolies)
-            {
-                sfButtons[counter] = new SfButton()
-                {
-                    Style = (Style)tableCo.Convert(item, null, this, CultureInfo.CurrentCulture),
-                    BindingContext = item,
-                    Text = item.Id.ToString(),
-                    PressedBackgroundColor = Color.Blue,
-
-                };
-                sfButtons[counter].Clicked += Zkouska_Clicked;
-                counter++;
-
-            }
-            int zbytek;
-            int quotient = Math.DivRem(viewModel.Stolies.Count, 3, out zbytek);
-
-
-
-            Frame[] frame = new Frame[quotient];
-            int counters = 0;
-            for (int i = 0; i < quotient; i++)
-            {
-
-                frame[i] = new Frame()
-                {
-                    Style = (Style)Application.Current.Resources["TableFrame"],
-                    Content = new StackLayout()
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        Children = { sfButtons[counters], sfButtons[counters + 1], sfButtons[counters + 2] }
-                    }
-                };
-                counters += 3;
-
-            }
-            var s = new StackLayout();
-            for (int i = 0; i < frame.Length; i++)
-            {
-                s.Children.Add(frame[i]);
-            }
-            Content = s;
-
+            InitializeComponent();
+            BindingContext = viewModel = new TableesViewModel();
 
 
         }
 
-        private void Zkouska_Clicked(object sender, EventArgs e)
+         async override protected void OnAppearing()
         {
-            var Value = (SfButton)sender;
-           
+            base.OnAppearing();
+
+            if (viewModel.Stolies.Count() < 1)
+            {
+                await viewModel.GetTask();
+            }
 
         }
 
+        private async void SfDataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
+        {
+         var s= (Tables)SfGrid.SelectedItem;
+            if(s.isAvailable==true)
+            {
+                s.isAvailable = false;
+               var bla=await  viewModel.PutTask(s);
+                s = bla;
 
+            }
+           await Navigation.PushAsync(new TableCollection(s));
 
+        }
     }
 }
+
 

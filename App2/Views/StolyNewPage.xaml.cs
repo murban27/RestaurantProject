@@ -13,12 +13,12 @@ namespace App2.Views
     public partial class StolyNewPage : ContentPage
 
     {
-        public Models.Stoly Stul { get; set; }
+        public Models.StolyBackup Stul { get; set; }
         public StolyNewPage()
         {
             InitializeComponent();
 
-            Stul = new Models.Stoly { Kapacita = 24 };
+            Stul = new Models.StolyBackup { Kapacita = 24 };
 
             BindingContext = this;
 
