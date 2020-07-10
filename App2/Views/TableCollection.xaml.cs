@@ -64,5 +64,10 @@ namespace App2.Views
 
             SfGrid.IsBusy = false;
         }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

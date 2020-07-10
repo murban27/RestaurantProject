@@ -26,7 +26,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
                 <datagrid:GridTemplateColumn HeaderText="Přidat do objednávky" ColumnSizer="Auto" MappingName="itemId"  >
                     <datagrid:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ImageButton BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center" Source="ic_launcher.png"></ImageButton>
+                            <ImageButton BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit" Clicked="ImageButton_Clicked" HorizontalOptions="Center" VerticalOptions="Center" Source="ic_launcher.png"></ImageButton>
                         </DataTemplate>
                     </datagrid:GridTemplateColumn.CellTemplate>
                 </datagrid:GridTemplateColumn>
