@@ -13,20 +13,20 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
              x:Class="App2.Views.TableCollection">
 
     <StackLayout>
-        <tabview:SfTabView Items="{Binding Items}" TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" TabHeaderPosition="Top" TabHeight="50">
+        <tabview:SfTabView Items="{Binding Items}" SelectionChanged="SfTabView_SelectionChanged" TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" TabHeaderPosition="Top" TabHeight="50">
 
         </tabview:SfTabView>
         <datagrid:SfDataGrid x:Name="SfGrid" BackgroundColor="#226765"
             ItemsSource="{Binding Polozkas}" SelectionMode="Single" VerticalOptions="StartAndExpand" HorizontalOptions="Start" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  PullToRefreshCommand="{Binding LoadItemsCommand}" >
-            <datagrid:SfDataGrid.Columns>
-                <datagrid:GridTextColumn HeaderText="Položka" MappingName="name" ColumnSizer="Star" >
+            <datagrid:SfDataGrid.Columns >
+                <datagrid:GridTextColumn  HeaderText="Položka" MappingName="name" ColumnSizer="Star" >
    
                 </datagrid:GridTextColumn>
                 <datagrid:GridNumericColumn HeaderText="Cena"  MappingName="price" ColumnSizer="SizeToHeader"/>
-                <datagrid:GridTemplateColumn HeaderText="Přidat do objednávky" ColumnSizer="LastColumnFill">
+                <datagrid:GridTemplateColumn HeaderText="Přidat do objednávky" ColumnSizer="Auto" MappingName="itemId"  >
                     <datagrid:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Text="Přidej"></Button>
+                            <ImageButton BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center" Source="ic_launcher.png"></ImageButton>
                         </DataTemplate>
                     </datagrid:GridTemplateColumn.CellTemplate>
                 </datagrid:GridTemplateColumn>

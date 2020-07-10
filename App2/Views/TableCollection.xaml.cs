@@ -2,6 +2,7 @@
 using App2.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,17 +42,27 @@ namespace App2.Views
 
         private void SfTabView_TabItemTapped(object sender, Syncfusion.XForms.TabView.TabItemTappedEventArgs e)
         {
+            
 
         }
 
         private void SfTabView_CenterButtonTapped(object sender, EventArgs e)
         {
 
-        }
+        }/// <summary>
+        /// Metoda která filtruje na základě změny selectoru
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void SfTabView_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
         {
+            int sectionId = viewmModel.Sekces.Where(x => x.name == e.Name).Select(x => x.id).FirstOrDefault();//načti id z listu
+            SfGrid.IsBusy = true;//zastav grid
+           var s= viewmModel.Polozkas.Where(x => x.sectionId == sectionId).Select(x=>x);   //aplikuj filtr
+            SfGrid.ItemsSource = s;
 
+            SfGrid.IsBusy = false;
         }
     }
 }
