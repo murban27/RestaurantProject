@@ -12,12 +12,21 @@ namespace App2.Services
 {
     public class OrderInfoServices : IDataStore<Orders>
     {
-        public async Task<bool> AddItemAsync(Orders item)
+        public async Task<Orders> AddItemAsync(Orders item)
         { 
 
             StringContent content = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json");
-            var responce = await AuthClient.Client.PostAsync(string.Format($"Orders"),content);
-
+            var responce = await AuthClient.Client.PostAsync(string.Format($"Orders"),content);//vytvoř objednávku
+            if(responce.IsSuccessStatusCode)
+            {
+                var s = await responce.Content.ReadAsStringAsync();// Přečti a vrat objednávku
+                var DeseRialize = JsonSerializer.Deserialize<Orders>(s);
+                return DeseRialize;
+            }
+            else
+            {
+                return null;
+            }
             
   
         }
@@ -60,6 +69,11 @@ namespace App2.Services
         }  
 
         public Task<bool> UpdateItemAsync(Orders item)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IDataStore<Orders>.AddItemAsync(Orders item)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,6 @@
 ﻿using App2.Models;
 using App2.Services;
+using App2.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,21 +26,34 @@ namespace App2.ViewModels
             LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetTask());
         }
 
-        public async Task PutTask(Tables table)
+        /// <summary>
+        /// Vrat objednávku a stůl
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        public async Task<Tables> PutTask(Tables table)
         {
-           
+            OrderInfoServices orderInfoServices = new OrderInfoServices();
+
                 StolyDataService stolyDataService = new StolyDataService();
 
-                if (IsBusy)
-                    return;
+              
 
                 IsBusy = true;
                 Stolies.Clear();
-                table.isAvailable = false;
+              
               var result=  await stolyDataService.UpdateItemAsync(table);
+        
+             
+                Orders dataStore = new Orders() { tableId = table.id, startTime = DateTime.Now,};
+               var s =await orderInfoServices.AddItemAsync(dataStore);
+            table.orders = new ObservableCollection<Orders>();
 
+
+            table.orders.Add(s);
+           
             IsBusy = false;
-
+            return table;
 
         }
 

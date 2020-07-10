@@ -44,16 +44,17 @@ namespace App2.Views
 
         }
 
-        private void SfDataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
+        private async void SfDataGrid_GridDoubleTapped(object sender, Syncfusion.SfDataGrid.XForms.GridDoubleTappedEventArgs e)
         {
          var s= (Tables)SfGrid.SelectedItem;
             if(s.isAvailable==true)
             {
-                s.isAvailable = true;
-                viewModel.Put(s);
+                s.isAvailable = false;
+               var bla=await  viewModel.PutTask(s);
+                s = bla;
 
             }
-            Navigation.PushAsync(new TableCollection(s));
+           await Navigation.PushAsync(new TableCollection(s));
 
         }
     }

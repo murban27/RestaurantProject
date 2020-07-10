@@ -69,7 +69,7 @@ namespace App2.Services
             HttpResponseMessage httpResponseMessage = await AuthClient.Client.PutAsync(string.Format($"Tables/{Id}"), content);
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                var zdar = (ObservableCollection<Tables>)JsonSerializer.Deserialize<ObservableCollection<Tables>>(await httpResponseMessage.Content.ReadAsStringAsync());
+              
                 return await Task.FromResult(httpResponseMessage.IsSuccessStatusCode);
 
             }
