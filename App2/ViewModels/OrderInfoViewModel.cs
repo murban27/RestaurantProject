@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Android.Telephony;
 using App2.Models;
 using App2.Services;
 using App2.Views;
@@ -17,8 +19,11 @@ namespace App2.ViewModels
     {
         public Xamarin.Forms.Command LoadItemsCommand { get; set; }
         public Xamarin.Forms.Command LoadPolozkasCommand { get; set; }
-
-
+        private string celkove;
+        public string Celkove
+        {
+            get { return celkove; } set { celkove = value; OnPropertyChanged(); }
+        }
         public ObservableCollection<Models.Items> Polozkas { get; set; }
         public ObservableCollection<Sekce> Sekces { get; set; }
         public ObservableCollection<Orders> Orders { get; set; }
@@ -122,9 +127,12 @@ namespace App2.ViewModels
                     OrderDetails.Add(item);
 
                 }
-                
+               
+          Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label      
+             
 
-                   
+
+
                 IsBusy = false;
             }
 

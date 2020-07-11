@@ -68,6 +68,11 @@ namespace App2.Views
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
 
+            var obj = (Xamarin.Forms.ImageButton)sender;//dostan object
+            var rodic = (Syncfusion.SfDataGrid.XForms.GridCell)obj.Parent;//rodic
+            var item = (App2.Models.Items)rodic.DataColumn.RowData;//cast na Item
+            
+           
         }
     }
 }
