@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Android.Telephony;
+using Android.Views;
 using App2.Models;
 using App2.Services;
 using App2.Views;
@@ -34,7 +35,7 @@ namespace App2.ViewModels
         public PolozkasService PolozkasService { get; set; }
         public Tables Table { get; set; }
         public ObservableCollection<OrderDetail> OrderDetails { get; set; }
-        public OrderInfoViewModel(Tables table=null)
+        public OrderInfoViewModel(Tables table = null)
 
         {
             this.Table = table;
@@ -45,7 +46,7 @@ namespace App2.ViewModels
             Items = new TabItemCollection();
             Polozkas = new ObservableCollection<Items>();
             OrderDetails = new ObservableCollection<OrderDetail>();
-                LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetOrderDetail());
+            LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetOrderDetail());
 
         }
         public async Task GetPolozkas()
@@ -56,7 +57,7 @@ namespace App2.ViewModels
             PolozkasService = new PolozkasService();
             Polozkas.Clear();
             var s = await PolozkasService.GetItemsAsync();
-             foreach (var item in s)
+            foreach (var item in s)
             {
                 Polozkas.Add(item);
             }
@@ -64,111 +65,138 @@ namespace App2.ViewModels
             IsBusy = false;
         }
         /// <summary>
-        /// Vytvoří objednávku
+        /// Přidá položku do objednávky
         /// </summary>
         /// <returns></returns>
-        public async Task CreateOrder()
+        public async Task AddOrderItem(int ItemID)
         {
-
-        }
-        /// <summary>
-        /// Updatuje objednávku
-        /// </summary>
-        /// <returns></returns>
-        public async Task PutOrder()
-        {
-
-        }
-        /// <summary>
-        /// Ukončí objednávku
-        /// </summary>
-        /// <returns></returns>
-        public async Task EndOrder()
-        {
-
-        }
-    
-          public  async Task GetOrderDetail()
-        {
-            if (Table == null)
+            IsBusy = true;//Informuje view model o nedostupnosti
+            OrderDetail orderDetail = new OrderDetail()
             {
-
+                orderId = Table.orders[0].id,
+                itemId = ItemID
+            };
+            OrdeDetailService ordeDetailService = new OrdeDetailService();
+            var result = await ordeDetailService.AddItemAsync(orderDetail);
+            if (result == true)
+            {
+                await RebuildOrder(orderDetail);
+                Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label  
             }
             else
             {
-                if (IsBusy)
-                    return;
-                IsBusy = true;
-                OrderInfoServices = new OrderInfoServices();
-                Orders.Clear();
-                var s = await OrderInfoServices.GetItemAsync(Table.orders[0].id.ToString());
+                throw new Exception("Error during post");
 
-                if (s != null)
+            }
+            IsBusy = false;
+        }
+            /// <summary>
+            /// Updatuje objednávku
+            /// </summary>
+            /// <returns></returns>
+            public async Task PutOrder()
+            {
+
+            }
+            /// <summary>
+            /// Ukončí objednávku
+            /// </summary>
+            /// <returns></returns>
+            public async Task EndOrder()
+            {
+
+            }
+
+            public async Task GetOrderDetail()
+            {
+                if (Table == null)
                 {
 
-                    Orders.Add(s);
+                }
+                else
+                {
+                    if (IsBusy)
+                        return;
+                    IsBusy = true;
+                    OrderInfoServices = new OrderInfoServices();
+                    Orders.Clear();
+                    var s = await OrderInfoServices.GetItemAsync(Table.orders[0].id.ToString());
+
+                    if (s != null)
+                    {
+
+                        Orders.Add(s);
+                    }
+
+
+
+
+
+
+
+                    //Přidá cenu a název do kolekce
+                    foreach (var item in Orders[0].orderDetail)
+                    {
+                        var query = (from f in Orders[0].orderDetail
+                                     join k in Polozkas on f.itemId equals k.itemId
+                                     where k.itemId == item.itemId && item.orderId == f.orderId
+                                     select new { Price = k.price, Name = k.name }).FirstOrDefault();
+                        item.Price = query.Price;
+                        item.ItemName = query.Name;
+                        OrderDetails.Add(item);
+
+                    }
+
+                    Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label      
+
+
+
+
+                    IsBusy = false;
                 }
 
 
 
+            }
+        public async Task RebuildOrder(OrderDetail orderDetail)
+        {
+            var L = Polozkas.Where(x => x.itemId == orderDetail.itemId).Select(x => x).FirstOrDefault();//připoj cenu
+            orderDetail.Price = L.price;
+            orderDetail.ItemName = L.name;
+            OrderDetails.Add(orderDetail);
+             await Task.FromResult(true);
+
+        }
+
+            public void Sekce()
+            {
+                sekcesService = new SekcesService();
+                var result = Task.Run(async () => await sekcesService.GetItemsAsync()).Result;
 
 
 
 
-                //Přidá cenu a název do kolekce
-                foreach (var item in Orders[0].orderDetail)
+                foreach (var item in result)
                 {
-                var query = (from f in Orders[0].orderDetail
-                             join k in Polozkas on f.itemId equals k.itemId
-                             where k.itemId == item.itemId && item.orderId == f.orderId
-                             select new { Price = k.price, Name = k.name }).FirstOrDefault();
-                item.Price = query.Price;
-                item.ItemName = query.Name;
-                    OrderDetails.Add(item);
+                    Sekces.Add(item);
+
 
                 }
-               
-          Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label      
-             
+                AddSfTabItems();
 
 
 
-                IsBusy = false;
             }
-
-
-
-        }
-
-        public void Sekce()
-        {
-            sekcesService = new SekcesService();
-            var result = Task.Run(async () => await sekcesService.GetItemsAsync()).Result;
-
-
-
-       
-            foreach (var item in result)
+            public void AddSfTabItems()
             {
-                Sekces.Add(item);
-
-
+                foreach (var item in Sekces)
+                {
+                    Items.Add(new SfTabItem() { Title = item.name });
+                }
             }
-            AddSfTabItems();
 
 
 
         }
-        public void AddSfTabItems()
-        {
-            foreach (var item in Sekces)
-            {
-                Items.Add(new SfTabItem() { Title = item.name });
-            }
-        }
-
-
-
-    }
     }
 
