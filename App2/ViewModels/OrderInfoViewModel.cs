@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,17 +95,21 @@ namespace App2.ViewModels
             /// Updatuje objednávku
             /// </summary>
             /// <returns></returns>
-            public async Task PutOrder()
-            {
 
-            }
             /// <summary>
             /// Ukončí objednávku
             /// </summary>
             /// <returns></returns>
             public async Task EndOrder()
             {
+            Table.isAvailable = true;//uvolni stůl
+            var date = DateTime.UtcNow;
+            Orders[0].endTime = date;//Ukonči objednávku a konvertuj do správného tvaru
+            StolyDataService stolyDataService = new StolyDataService();
+            await stolyDataService.UpdateItemAsync(Table);
+            await OrderInfoServices.UpdateItemAsync(Orders[0]);
 
+            
             }
 
             public async Task GetOrderDetail()

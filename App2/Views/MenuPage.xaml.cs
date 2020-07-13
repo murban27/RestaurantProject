@@ -20,10 +20,8 @@ namespace App2.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-
-                new HomeMenuItem{Id=MenuItemType.Stoly,Title="Vymaž"},
+                new HomeMenuItem {Id = MenuItemType.Main, Title="Stoly s objednávky" },
+                new HomeMenuItem {Id = MenuItemType.About, Title="O projektu" },
                 new HomeMenuItem{Id=MenuItemType.Zkouska,Title="Stoly"},
                 new HomeMenuItem{Id=MenuItemType.CollectionTables,Title="ZkouskaCollection"},
                 new HomeMenuItem{Id=MenuItemType.Vat,Title="Daňové sazby"}

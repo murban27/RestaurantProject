@@ -50,7 +50,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
 
         </StackLayout>
         
-        <Button Text="Ukonči objednávku" VerticalOptions="Fill"></Button>
+        <Button Text="Ukonči objednávku" VerticalOptions="Fill" Clicked="Button_Clicked"></Button>
     </StackLayout>
 </ContentPage>
     

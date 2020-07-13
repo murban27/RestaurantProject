@@ -28,11 +28,11 @@ namespace App2.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Bla();
+            ValidateUser();
 
         }
 
-        public async void Bla()
+        public async void ValidateUser()
         {
             Login login = new Login();
             login.UserName = UserName;

@@ -75,9 +75,10 @@ namespace App2.Services
         public async Task<bool> UpdateItemAsync(Orders item)
         {
             string id = item.id.ToString();
-           
 
-            StringContent stringContent = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8);
+           //TEST JSON string ForDelete = JsonSerializer.Serialize(item);
+
+            StringContent stringContent = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json");
             try
             {
                 var responce = await AuthClient.Client.PutAsync(string.Format($"Orders/{id}"), stringContent);
@@ -85,9 +86,11 @@ namespace App2.Services
                 {
                     var s = await responce.Content.ReadAsStringAsync();
                     string message = s;
-
-                    var deserialize = JsonSerializer.Deserialize<Orders>(await responce.Content.ReadAsStringAsync());
-                    return await Task.FromResult(responce.IsSuccessStatusCode);
+                    if (responce.StatusCode != System.Net.HttpStatusCode.NoContent)//vyluč no content
+                    {
+                        var deserialize = JsonSerializer.Deserialize<Orders>(await responce.Content.ReadAsStringAsync());
+                    }
+                        return await Task.FromResult(responce.IsSuccessStatusCode);
                 }
                 else
                 {
