@@ -47,7 +47,7 @@ namespace App2.Views
                 if (e.OldValue.ToString() != e.NewValue.ToString() && e.NewValue != null&&ItemObject.CurrentItem!=null)
                 {
                 sfGrid.IsBusy = true;
-
+                sfGrid.IsEnabled = false;
                 var VATItem = ItemObject.CurrentItem as Models.VAT;
                 if (e.RowColumnIndex.ColumnIndex == 0)
                     {
@@ -58,11 +58,14 @@ namespace App2.Views
                     {
                         VATItem.percentage = int.Parse(e.NewValue.ToString());
                     }
-                    sfGrid.UpdateDataRow(e.RowColumnIndex.RowIndex);
+                  
                     
                     await viewModel.UpdateVat(VATItem);
-             sfGrid.Refresh();
+
+                 viewModel.Command.Execute(null);
+          
                 sfGrid.IsBusy = false;
+                sfGrid.IsEnabled = true;
             }
 
             
