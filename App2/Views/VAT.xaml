@@ -1,49 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
 xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="App2.Views.VAT">
+             x:Class="App2.Views.VAT"
+             Title="{Binding Title}">
+    
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <listview:SfListView  x:Name="listView"  ItemsSource="{Binding Dane}" Orientation="Vertical" >
 
-                <listview:SfListView.LayoutManager >
-                    <listview:GridLayout SpanCount="2" >
+        <StackLayout Orientation="Vertical" BackgroundColor="White">
 
-                    </listview:GridLayout>
-                </listview:SfListView.LayoutManager>
-                <listview:SfListView.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid BackgroundColor="#4CA1FE" HeightRequest="45">
-                            <Label LineBreakMode="NoWrap"
-                    Margin="10,0,10,0" Text="Daňové sazby" FontAttributes="Bold"
-                    FontSize="18" TextColor="White" HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
-                        </Grid>
-                    </DataTemplate>
-
-                </listview:SfListView.HeaderTemplate>
-
-                <listview:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HorizontalOptions="StartAndExpand" Padding="10" BackgroundColor="SaddleBrown">
-
-                            <Label Text="{Binding name}" VerticalOptions="Start" HorizontalOptions="Start" Grid.ColumnSpan="1"/>
-                            <Label Text="{Binding Value} " VerticalOptions="End" HorizontalOptions="End" Grid.ColumnSpan="2"></Label>
-                        </Grid>
-                      
-                        
-                    </DataTemplate>
-
-                  
-               
-                </listview:SfListView.ItemTemplate>
-            </listview:SfListView>
-
-
+            <datagrid:SfDataGrid ValueChanged="sfGrid_ValueChanged" x:Name="sfGrid" VerticalOptions="FillAndExpand" BackgroundColor="White"  CurrentCellEndEdit="SfDataGrid_CurrentCellEndEdit"  AllowDeleting="True" NavigationMode="Cell"  SelectionMode="SingleDeselect" ColumnSizer="Star" AutoGenerateColumns="False" AllowEditing="True" EditorSelectionBehavior="SelectAll" EditTapAction="OnTap"
+            ItemsSource="{Binding Dane,Mode=TwoWay}">
+                <datagrid:SfDataGrid.Columns>
+                    <datagrid:GridTextColumn HeaderText="Název" MappingName="name"  />
+                    <datagrid:GridNumericColumn HeaderText="Procentuální hodnota" MappingName="percentage" />
+                </datagrid:SfDataGrid.Columns>
+         
+            </datagrid:SfDataGrid>
+            <button:SfButton Text="Nová daň" VerticalOptions="Fill" HorizontalOptions="End"/>
 
         </StackLayout>
     </ContentPage.Content>

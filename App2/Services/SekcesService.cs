@@ -12,7 +12,7 @@ namespace App2.Services
 {
     public class SekcesService : IDataStore<Sekce>
     {
-        public System.Collections.ObjectModel.ObservableCollection<Sekce> Sekces { get; set; }
+      
 
         public async Task<bool> AddItemAsync(Sekce item)
         {
