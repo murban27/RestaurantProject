@@ -5,6 +5,7 @@ using Syncfusion.SfDataGrid.XForms;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,27 @@ namespace App2.Views
             BindingContext = viewModel = new VatSettingsViewModel();
 
             InitializeComponent();
+         //Přihlas odběr zpráv do druhé stránky, přidání TAXI
+            MessagingCenter.Subscribe<NewVatPage,Models.VAT>(this, "AddTax", async (obj, item) =>
+            {
+                var newItem = item as Models.VAT;
+                try
+                {
+                  
+                   //Přidej do listu
+                   await viewModel.VatServices.AddItemAsync(newItem);
+                    IsBusy = true;
+                    viewModel.Command.Execute(null);
+                    await Navigation.PopModalAsync();
+                    IsBusy = false;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
 
-     
+            });
+
 
         }
 
@@ -74,6 +94,14 @@ namespace App2.Views
 
         private void sfGrid_ValueChanged(object sender, Syncfusion.SfDataGrid.XForms.ValueChangedEventArgs e)
        {
+
+        }
+
+        private void SfButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewVatPage()); ///Přidej navigáční stránku
+            Navigation.RemovePage(this);
+
 
         }
     }

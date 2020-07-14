@@ -22,6 +22,7 @@ namespace App2.Views
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.Main, (NavigationPage)Detail);
+          
         }
 
         public async Task NavigateFromMenu(int id)

@@ -22,7 +22,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                 </datagrid:SfDataGrid.Columns>
          
             </datagrid:SfDataGrid>
-            <button:SfButton Text="Nová daň" VerticalOptions="Fill" HorizontalOptions="End"/>
+            <button:SfButton Clicked="SfButton_Clicked" Text="Nová daň" VerticalOptions="Fill" HorizontalOptions="End"/>
 
         </StackLayout>
     </ContentPage.Content>
