@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.EditTablePage"
+             Title="Managment stolů">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nový stůl" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+        <StackLayout  BackgroundColor="#373082" VerticalOptions="FillAndExpand">
+            <datagrid:SfDataGrid RowHeaderWidth="20" BackgroundColor="#373082" ColumnSpacing="5" x:Name="sfgrid" CurrentCellEndEdit="sfgrid_CurrentCellEndEdit"  SelectionMode="SingleDeselect" EditTapAction="OnTap" NavigationMode="Cell" AllowEditing="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Stolies,Mode=TwoWay}" AutoGenerateColumns="False">
+                <datagrid:SfDataGrid.Columns>
+                    
+                    <datagrid:Columns  >
+
+                        <datagrid:GridTextColumn  HeaderCellTextSize="20" FontAttribute="Bold" ColumnSizer="Star" HeaderText="Číslo stolu" TextAlignment="Center"  MappingName="id" AllowEditing="False" CellTextSize="15">
+                        
+                        </datagrid:GridTextColumn>
+                        <datagrid:GridNumericColumn HeaderCellTextSize="20" CellTextSize="15" FontAttribute="Bold" ColumnSizer="LastColumnFill" HeaderText="Kapacita" TextAlignment="Center" ShowClearButton="True" MappingName="capacity" AllowEditing="True"/>
+
+
+                    </datagrid:Columns>
+
+
+                </datagrid:SfDataGrid.Columns>
+            </datagrid:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

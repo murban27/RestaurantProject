@@ -42,10 +42,16 @@
     <Compile Update="Views\SfTablxampGraphic.xaml.cs">
       <DependentUpon>SfTablxampGraphic.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\EditTablePage.xaml.cs">
+      <DependentUpon>EditTablePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Views\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewTable.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewVatPage.xaml">
@@ -60,7 +66,7 @@
     <EmbeddedResource Update="Views\TableCollection.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TableNewPage.xaml">
+    <EmbeddedResource Update="Views\EditTablePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\VAT.xaml">

@@ -47,8 +47,8 @@ namespace App2.Views
      
 
             MessagingCenter.Send(this, "AddTax", viewModel.Dane);//Pošli zprávu
-            await Navigation.PushAsync(new VAT());//Zruš stránku
-            Navigation.RemovePage(this);
+            await Navigation.PushAsync(new VAT());
+            Navigation.RemovePage(this);//Zruš stránku
 
 
         }

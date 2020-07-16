@@ -43,9 +43,12 @@ namespace App2.Views
                     case (int)MenuItemType.Vat:
                         MenuPages.Add(id, new NavigationPage(new VAT()));
                         break;
-                    /*case (int)MenuItemType.CollectionTables:
-                        MenuPages.Add(id, new NavigationPage(new TableCollection()));
-                        break;*/
+                    case (int)MenuItemType.EditTablePage:
+                        MenuPages.Add(id, new NavigationPage(new EditTablePage()));
+                        break;
+                        /*case (int)MenuItemType.CollectionTables:
+                            MenuPages.Add(id, new NavigationPage(new TableCollection()));
+                            break;*/
 
 
                 }

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.NewTable">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ulož" Clicked="Button_Clicked"></ToolbarItem>
+        <ToolbarItem Text="Cancel" Clicked="ToolbarItem_Clicked_1"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <dataform:SfDataForm AutoGenerateItems="True" LayoutOptions="Default" NotifyPropertyChanges="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AutoGeneratingDataFormItem="dataForm_AutoGeneratingDataFormItem" x:Name="dataForm"  DataObject="{Binding Table,Mode=TwoWay}">
+            </dataform:SfDataForm>
+
+
+        </StackLayout>
+    </ContentPage.Content> 
+</ContentPage>

@@ -9,9 +9,8 @@ namespace App2.Models
         Main,
         About,
         Zkouska,
-        Tables,
-        CollectionTables,
-        Vat
+        Vat,
+        EditTablePage
     }
     public class HomeMenuItem
     {
