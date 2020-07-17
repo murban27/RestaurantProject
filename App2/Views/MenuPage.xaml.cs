@@ -23,7 +23,8 @@ namespace App2.Views
                 new HomeMenuItem {Id = MenuItemType.Main, Title="Objednávky" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="O projektu" },
                 new HomeMenuItem{Id=MenuItemType.EditTablePage,Title="Správa stolů"},
-                new HomeMenuItem{Id=MenuItemType.Vat,Title="Daňové sazby"}
+                new HomeMenuItem{Id=MenuItemType.Vat,Title="Daňové sazby"},
+                new HomeMenuItem{Id=MenuItemType.EditItem, Title="Editace položek"}
 
             };
 

@@ -2,10 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:App2.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              mc:Ignorable="d"
              x:Class="App2.Views.EditItemPage">
+    <ContentPage.BindingContext>
+        <viewModel:EditItemsPageViewModel x:Name="viewModel">
+            
+        </viewModel:EditItemsPageViewModel >
+    </ContentPage.BindingContext>
     <ContentPage.Content>
+        <StackLayout  BackgroundColor="#373082" VerticalOptions="FillAndExpand">
+            <datagrid:SfDataGrid RowHeaderWidth="20"  ColumnSpacing="5" x:Name="sfgrid" CurrentCellEndEdit="sfgrid_CurrentCellEndEdit"  SelectionMode="SingleDeselect" EditTapAction="OnTap" NavigationMode="Cell" AllowEditing="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemsSource="{Binding EditItems,Mode=TwoWay}" AutoGenerateColumns="false">
+                <datagrid:SfDataGrid.Columns>
+                    <datagrid:Columns>
+                        <datagrid:GridTextColumn  HeaderCellTextSize="15" AllowSorting="True" 
+                                                    MappingName="Name" HeaderText="Název položky" 
+                                                    AllowEditing="True" ColumnSizer="Auto"></datagrid:GridTextColumn>
+                        <datagrid:GridPickerColumn BindingContext="{x:Reference viewModel}" 
+                                                   HeaderText="Název daně" ColumnSizer="Auto" MappingName="VatName" 
+                                                   ItemsSource="{Binding VatNames}" HeaderCellTextSize="15" ></datagrid:GridPickerColumn>
+                        <datagrid:GridNumericColumn AllowEditing="True" HeaderText="Cena" MappingName="Price" HeaderCellTextSize="15" 
+                                                    ColumnSizer="Auto">
+                        </datagrid:GridNumericColumn>
+                        <datagrid:GridPickerColumn BindingContext="{x:Reference viewModel}" 
+                                                   HeaderText="Jméno sekce" ColumnSizer="Auto" MappingName="SectionName" 
+                                                   ItemsSource="{Binding SectionNames}" HeaderCellTextSize="15" ></datagrid:GridPickerColumn>
 
+                    </datagrid:Columns>
+                    
+                </datagrid:SfDataGrid.Columns>
+            </datagrid:SfDataGrid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

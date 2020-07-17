@@ -9,7 +9,8 @@ namespace App2.Models
         Main,
         About,
         EditTablePage,
-        Vat
+        Vat,
+        EditItem
     }
     public class HomeMenuItem
     {
