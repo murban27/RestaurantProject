@@ -8,9 +8,8 @@ namespace App2.Models
     {
         Main,
         About,
-        Zkouska,
-        Vat,
-        EditTablePage
+        EditTablePage,
+        Vat
     }
     public class HomeMenuItem
     {

@@ -3,6 +3,7 @@ using App2.ViewModels;
 using Syncfusion.SfDataGrid.XForms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,27 @@ namespace App2.Views
 
             InitializeComponent();
             BindingContext = viewModel = new TableesViewModel();
+            MessagingCenter.Subscribe<NewTable, Models.Tables>(this, "AddTable", async (obj, item) =>
+            {
+                var newItem = item as Models.Tables;
+                try
+                {
+      
+                    //Přidej do listu
+                    await viewModel.AddTableAsync(newItem,true);
+                    IsBusy = true;
 
-        }
+                    await Navigation.PopModalAsync();
+                    IsBusy = false;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            });
+            }
+
+        
 
         async protected override void OnAppearing()
         {

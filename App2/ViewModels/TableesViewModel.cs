@@ -58,10 +58,10 @@ namespace App2.ViewModels
             return table;
 
         }
-        public async Task AddTableAsync(Tables table)
+        public async Task AddTableAsync(Tables table,bool IsAvailable=false)
 
         {
-            table.isAvailable = false;
+            table.isAvailable = IsAvailable;
             if (IsBusy)
                 return;
 
@@ -101,6 +101,9 @@ UpdateTableAsync(Tables tables)
             }
 
         }
+
+
+
 
         public async Task GetTask()
         {
