@@ -23,10 +23,11 @@ namespace App2.Views
             BindingContext = viewModel = new VatSettingsViewModel();
 
             InitializeComponent();
-         //Přihlas odběr zpráv do druhé stránky, přidání TAXI
+
             MessagingCenter.Subscribe<NewVatPage,Models.VAT>(this, "AddTax", async (obj, item) =>
             {
-                var newItem = item as Models.VAT;
+                //Přihlášení odběr
+                var newItem = item as Models.VAT; //Paranetr převedený na datový typ
                 try
                 {
                   

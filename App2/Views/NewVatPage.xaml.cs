@@ -41,13 +41,17 @@ namespace App2.Views
             await Navigation.PopModalAsync();//Zruš stránku
         }
 
-
-        private async void SaveItem_ClickAsync(object sender, EventArgs e)
+        /// <summary>
+        /// Kliknutí na uložit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void SaveItem_ClickAsync(object sender, EventArgs e) //
         {
      
 
-            MessagingCenter.Send(this, "AddTax", viewModel.Dane);//Pošli zprávu
-            await Navigation.PushAsync(new VAT());
+            MessagingCenter.Send(this, "AddTax", viewModel.Dane);//Pošli zprávu do jiné stránky
+            await Navigation.PushAsync(new VAT()); //Naveď zpět na stránku
             Navigation.RemovePage(this);//Zruš stránku
 
 

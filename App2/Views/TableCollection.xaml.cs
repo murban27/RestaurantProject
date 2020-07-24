@@ -20,15 +20,10 @@ namespace App2.Views
         public TableCollection(Tables tables)
         {
 
-            BindingContext = this.viewmModel = new OrderInfoViewModel(tables);
-            viewmModel.Sekce();
+            BindingContext = this.viewmModel = new OrderInfoViewModel(tables); //Nastaví Context pro stránku TableCollection na třídu OrderInfo
+            viewmModel.Sekce(); //načte Sekce - nealko,alko,menu,atp
 
             InitializeComponent();
-
-
-
-
-
         }
         //Načti kolekce
         async protected override void OnAppearing()

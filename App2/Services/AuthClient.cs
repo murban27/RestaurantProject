@@ -1,4 +1,5 @@
 ﻿using App2.Models;
+using App2.Views;
 using Syncfusion.XForms.AvatarView;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace App2.Services
     public static class AuthClient
     {
         public static HttpClient Client { get; set; }
-        public static Login Login { get; set; }
+        public static Models.Login Login { get; set; }
 
 
 
@@ -37,10 +38,10 @@ namespace App2.Services
             if(responce.IsSuccessStatusCode)
             {
 
-                var zdar = JsonSerializer.Deserialize<Login>(await responce.Content.ReadAsStringAsync());
-                zdar.Password = Login.Password;
-                zdar.Login1 = Login.Login1;
-                Login = zdar;
+                var odpoved = JsonSerializer.Deserialize<Models.Login>(await responce.Content.ReadAsStringAsync());
+                odpoved.Password = Login.Password;
+                odpoved.Login1 = Login.Login1;
+                Login = odpoved;
                 return true;
                
                 }

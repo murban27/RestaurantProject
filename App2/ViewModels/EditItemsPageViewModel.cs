@@ -36,8 +36,8 @@ namespace App2.ViewModels
         {
             Items = new ObservableCollection<Items>();
             VAT = new ObservableCollection<VAT>();
-            VatServices = new VatServices();
-            PolozkasService = new PolozkasService();
+            VatServices = new VatServices();//Třída, která implementuje API komunikaci pro daně
+            PolozkasService = new PolozkasService(); //Třída, která implementuje API komunikaci pro položky
             EditItems = new ObservableCollection<EditItem>();
             VatNames = new ObservableCollection<string>();
             SectionNames = new ObservableCollection<string>();
@@ -121,17 +121,17 @@ namespace App2.ViewModels
         public async Task GetPolozkas()
         {
             if (IsBusy)
-                return;
+                return;  //Pokud už je zaneprázděna nevykonávej činnost
 
-            IsBusy = true;
+            IsBusy = true;//Nastavení zaneprázdněnosti
 
             try
             {
                 Items.Clear();
-                var items = await PolozkasService.GetItemsAsync(true);
+                var items = await PolozkasService.GetItemsAsync(true);//Request na API pro položky
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    Items.Add(item);//Přidá položky do kolekce
 
                 }
             }
@@ -142,7 +142,7 @@ namespace App2.ViewModels
             }
             finally
             {
-                IsBusy = false;
+                IsBusy = false;//Odblokuj zaneprázdnění
             }
         }
         public async         Task

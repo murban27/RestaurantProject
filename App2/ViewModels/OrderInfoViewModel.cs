@@ -24,7 +24,8 @@ namespace App2.ViewModels
         private string celkove;
         public string Celkove
         {
-            get { return celkove; } set { celkove = value; OnPropertyChanged(); }
+            get { return celkove; } set { celkove = value;
+                OnPropertyChanged(); }//Vyvolá událost změny
         }
         public ObservableCollection<Models.Items> Polozkas { get; set; }
         public ObservableCollection<Sekce> Sekces { get; set; }
@@ -47,7 +48,7 @@ namespace App2.ViewModels
             Items = new TabItemCollection();
             Polozkas = new ObservableCollection<Items>();
             OrderDetails = new ObservableCollection<OrderDetail>();
-            LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetOrderDetail());
+            LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetOrderDetail());  //Přiřadíme příkazu metodu a určíme jeho aynchronní provedení
 
         }
         public async Task GetPolozkas()
