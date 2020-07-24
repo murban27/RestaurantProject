@@ -54,5 +54,10 @@ namespace App2.Views
             sfgrid.IsBusy = false;
 
         }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

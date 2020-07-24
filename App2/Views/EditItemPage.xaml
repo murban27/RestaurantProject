@@ -6,6 +6,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              mc:Ignorable="d"
              x:Class="App2.Views.EditItemPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nová položka" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <viewModel:EditItemsPageViewModel x:Name="viewModel">
             
