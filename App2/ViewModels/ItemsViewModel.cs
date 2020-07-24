@@ -20,7 +20,7 @@ namespace App2.ViewModels
             Title = "Browse";
             Items = new ObservableCollection<Items>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
+       
             MessagingCenter.Subscribe<NewItemPage, Items>(this, "AddItem", async (obj, item) =>
             {
                 /*

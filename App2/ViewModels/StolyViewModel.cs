@@ -28,7 +28,7 @@ namespace App2.ViewModels
             Title = "Stoly";
             Stolies = new ObservableCollection<StolyBackup>();
             LoadItemsCommand = new Command(async () => await ExecLoadItemsCommand());
-
+            ///Příjem zprávy
             MessagingCenter.Subscribe<StolyNewPage,StolyBackup>(this,"AddTable",async(obj,item)=>
                 {
                     var newItem = item as StolyBackup;

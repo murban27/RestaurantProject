@@ -67,10 +67,43 @@ namespace App2.Services
         {
             throw new NotImplementedException();
         }  
-
-        public Task<bool> UpdateItemAsync(Orders item)
+        /// <summary>
+        /// Updatni objednávky
+        /// </summary>
+        /// <param name="item"> Objednávka </param>
+        /// <returns></returns>
+        public async Task<bool> UpdateItemAsync(Orders item)
         {
-            throw new NotImplementedException();
+            string id = item.id.ToString();
+
+           //TEST JSON string ForDelete = JsonSerializer.Serialize(item);
+
+            StringContent stringContent = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, "application/json");
+            try
+            {
+                var responce = await AuthClient.Client.PutAsync(string.Format($"Orders/{id}"), stringContent);
+                if (responce.IsSuccessStatusCode)
+                {
+                    var s = await responce.Content.ReadAsStringAsync();
+                    string message = s;
+                    if (responce.StatusCode != System.Net.HttpStatusCode.NoContent)//vyluč no content
+                    {
+                        var deserialize = JsonSerializer.Deserialize<Orders>(await responce.Content.ReadAsStringAsync());
+                    }
+                        return await Task.FromResult(responce.IsSuccessStatusCode);
+                }
+                else
+                {
+                    throw new Exception(responce.StatusCode.ToString());
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+
         }
 
         Task<bool> IDataStore<Orders>.AddItemAsync(Orders item)

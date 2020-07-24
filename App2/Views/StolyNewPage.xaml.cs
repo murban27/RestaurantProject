@@ -28,7 +28,7 @@ namespace App2.Views
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddTable", Stul);
-            await Navigation.PopModalAsync();
+            
         }
     }
 }

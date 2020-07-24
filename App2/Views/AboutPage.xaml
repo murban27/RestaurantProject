@@ -51,7 +51,8 @@
 
         <ScrollView Grid.Row="2" Padding="16,40,16,40">
             <StackLayout Margin="0,30,0,0"  >
-                <Button Text="Github repository" TextColor="White" BackgroundColor="{StaticResource LightTextColor}" Command="{Binding OpenWebCommand}" CommandParameter="www.idnes.cz" ></Button>
+                <Button Text="Github repository" TextColor="White" BackgroundColor="{StaticResource LightTextColor}" 
+                        Command="{Binding OpenWebCommand}" CommandParameter="www.idnes.cz" ></Button>
             </StackLayout>
         </ScrollView>
     </Grid>

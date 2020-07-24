@@ -17,11 +17,13 @@ namespace App2.ViewModels
         public Xamarin.Forms.Command LoadItemsCommand { get; set; }
         public Xamarin.Forms.Command PutItemsCommand { get; set; }
         public ObservableCollection<Models.Tables> Stolies { get; set; }
+        private StolyDataService StolyDataService { get; set; }
         public Tables Stul { get; set; }
 
         public TableesViewModel()
         {
             Stolies = new ObservableCollection<Models.Tables>();
+            StolyDataService = new StolyDataService();
             PutItemsCommand = new Xamarin.Forms.Command(async () => await PutTask(Stul));
             LoadItemsCommand = new Xamarin.Forms.Command(async () => await GetTask());
         }
@@ -35,14 +37,14 @@ namespace App2.ViewModels
         {
             OrderInfoServices orderInfoServices = new OrderInfoServices();
 
-                StolyDataService stolyDataService = new StolyDataService();
+         
 
               
 
                 IsBusy = true;
                 Stolies.Clear();
               
-              var result=  await stolyDataService.UpdateItemAsync(table);
+              var result=  await StolyDataService.UpdateItemAsync(table);
         
              
                 Orders dataStore = new Orders() { tableId = table.id, startTime = DateTime.Now,};
@@ -56,17 +58,63 @@ namespace App2.ViewModels
             return table;
 
         }
+        public async Task AddTableAsync(Tables table,bool IsAvailable=false)
+
+        {
+            table.isAvailable = IsAvailable;
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            Stolies.Clear();
+            await StolyDataService.AddItemAsync(table);
+            var items = await StolyDataService.GetItemsAsync(true);
+            try
+            {
+                foreach (var item in items)
+                {
+                    Stolies.Add(item);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        public async         Task
+UpdateTableAsync(Tables tables)
+        {
+            if(IsBusy)
+            { return; }
+            try
+            {
+               await StolyDataService.UpdateItemAsync(tables);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+
+        }
+
+
+
 
         public async Task GetTask()
         {
-            StolyDataService stolyDataService = new StolyDataService();
+           
           
             if (IsBusy)
                 return;
 
             IsBusy = true;
             Stolies.Clear();
-            var items = await stolyDataService.GetItemsAsync(true);
+            var items = await StolyDataService.GetItemsAsync(true);
             try
             {
                 foreach (var item in items)

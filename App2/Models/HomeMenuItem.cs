@@ -6,13 +6,11 @@ namespace App2.Models
 {
     public enum MenuItemType
     {
-        Browse,
+        Main,
         About,
-        Stoly,
-        Zkouska,
-        Tables,
-        CollectionTables,
-        Vat
+        EditTablePage,
+        Vat,
+        EditItem
     }
     public class HomeMenuItem
     {

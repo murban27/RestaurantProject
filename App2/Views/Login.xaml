@@ -27,18 +27,15 @@ xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfD
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="150"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Image Grid.Row="1" Source="beerlivesmatter.jpg" HeightRequest="150" WidthRequest="250" Aspect="Fill" VerticalOptions="FillAndExpand"/>
+                <Image Grid.Row="1" Source="beerlivesmatter.jpg" HeightRequest="150" WidthRequest="250" Margin="5,0,0,5" Aspect="Fill" VerticalOptions="Center"/>
                 <Entry Grid.Row="2" x:Name="UserName" Placeholder="Username" PlaceholderColor="Black" FontSize="16"/>
                 <Entry Grid.Row="3" x:Name="Password" Placeholder="Password" PlaceholderColor="Black" FontSize="16" IsPassword="True"/>
-                <Button Text="LogIn" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="4" Clicked="Button_Clicked"/>
+                <Button Text="LogIn" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50" VerticalOptions="End" Grid.Row="4" Clicked="Button_Clicked"/>
             </Grid>
             </StackLayout>
-            <StackLayout Grid.Row="2" BackgroundColor="#ffffff">
-                <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
-                <Label Text="Dont'Have Account Login? SignUp" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-            </StackLayout>
+   
         </Grid>
     </ContentPage.Content>
     

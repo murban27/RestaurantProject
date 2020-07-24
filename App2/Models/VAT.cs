@@ -1,16 +1,17 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace App2.Models
 {
-   public class VAT
+    public class VAT
     {
-        [PrimaryKey,AutoIncrement]
-        public int ID { get; set; }
 
-        public string name { get; set; }
-        public int Value { get; set; }
+            public int vatId { get; set; }
+            public string name { get; set; }
+            public int percentage { get; set; }
+            public object[] item { get; set; }
+        
+
     }
 }

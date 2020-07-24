@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.Views.NewVatPage"
+             Title="Vytvoř novou daň">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Save" Clicked="SaveItem_ClickAsync" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Název daňové skupiny" FontSize="Medium" />
+            <Entry Text="{Binding Dane.name}" x:Name="entry" d:Text="Item name" FontSize="Small" Placeholder="Název" />
+            <Label Text="Hodnota" FontSize="Medium" />
+            <Editor Text="{Binding Dane.percentage}" FontSize="Medium" TextColor="Black" Placeholder="Procenta" />
+        </StackLayout>
+
+
+
+
+
+
+    </ContentPage.Content>
+
+</ContentPage>
