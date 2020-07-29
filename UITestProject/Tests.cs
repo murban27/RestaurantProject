@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
@@ -51,15 +53,25 @@ namespace UITestProject
         public void AddItemToOrder()
 
         {
+    
             System.Threading.Thread.Sleep(2500);
-            var items = app.WaitForElement(x => x.Marked("DatagridPolozka"));
-            app.Tap("DatagridPolozka R4C2");
+            var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
+
+            Cena = int.Parse(resultString);
+            var items = app.WaitForElement(x => x.Marked("ImageClick"));
+            var item = items.FirstOrDefault();
+            app.Tap(item.Id);
+
         }
         [Test, Order(4)]
         public void CheckCenu()
 
         {
-            Cena = int.Parse(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text);
+            System.Threading.Thread.Sleep(500);
+            var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
+
+            int ComparePrice = int.Parse(resultString);
+            Assert.AreNotEqual(ComparePrice, Cena);
 
         }
 
