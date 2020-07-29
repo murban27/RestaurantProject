@@ -31,12 +31,11 @@ namespace UITestProject
         public void A_LoginPage()
         {
            var item = app.WaitForElement(c => c.Marked("UserLabel"));
-          
-            app.EnterText("UserLabel","cisnik");
-            app.EnterText("PassLabel", "cisnik");
-            app.Tap(x => x.Marked("Loginbtn"));
-  
 
+            app.EnterText("UserLabel","cisnik");
+            System.Threading.Thread.Sleep(200);
+            app.EnterText("PassLabel","cisnik");
+            app.Tap(x => x.Marked("Loginbtn"));
 
         }
         [Test, Order(2)]
@@ -49,12 +48,12 @@ namespace UITestProject
 
         }
 
-    
+
         [Test, Order(3)]
         public void AddItemToOrder()
 
         {
-    
+
             System.Threading.Thread.Sleep(2500);
             var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
 
@@ -62,8 +61,9 @@ namespace UITestProject
             var items = app.WaitForElement(x => x.Marked("ImageClick"));
             var item = items.FirstOrDefault();
             app.Tap(item.Id);
-
         }
+
+        
         [Test, Order(4)]
         public void CheckTotalPrice()
 

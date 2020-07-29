@@ -201,7 +201,7 @@ namespace App2.ViewModels
             {
                 foreach (var item in Sekces)
                 {
-                    Items.Add(new SfTabItem() { Title = item.name });
+                    Items.Add(new SfTabItem() { Title = item.name,AutomationId=item.name });
                 }
             }
 

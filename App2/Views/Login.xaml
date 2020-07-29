@@ -30,7 +30,8 @@ xmlns:dataform="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfD
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Image Grid.Row="1" Source="beerlivesmatter.jpg" HeightRequest="150" WidthRequest="250" Margin="5,0,0,5" Aspect="Fill" VerticalOptions="Center"/>
-                <Entry Grid.Row="2" AutomationId="UserLabel" x:Name="UserName" Placeholder="Username" PlaceholderColor="Black" FontSize="16"/>
+                <Entry Grid.Row="2" AutomationId="UserLabel" x:Name="UserName" 
+                       Placeholder="Username" PlaceholderColor="Black" FontSize="16"/>
                 <Entry Grid.Row="3" AutomationId="PassLabel" x:Name="Password" Placeholder="Password" PlaceholderColor="Black" FontSize="16" IsPassword="True"/>
                 <Button Text="LogIn" AutomationId="Loginbtn" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50" VerticalOptions="End" Grid.Row="4" Clicked="Button_Clicked"/>
             </Grid>
