@@ -75,6 +75,7 @@ namespace App2.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+          
             var Responce = await DisplayAlert("Zaplaceno", string.Format($"{viewmModel.OrderDetails.Sum(x => x.Price)}?"), "Ano", "Ne");
             if (Responce == true)
             {
