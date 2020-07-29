@@ -20,7 +20,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
             </tabview:SfTabView>
      
         <datagrid:SfDataGrid x:Name="SfGrid" HeightRequest="13" HorizontalOptions="FillAndExpand" BackgroundColor="#672255"
-            ItemsSource="{Binding Polozkas}"  SelectionMode="Single" VerticalOverScrollMode="None" AllowDiagonalScrolling="False" 
+            ItemsSource="{Binding Polozkas}"  SelectionMode="Single" VerticalOverScrollMode="None" AllowDiagonalScrolling="False" AutomationId="DatagridPolozka" 
                              
                              VerticalOptions="Start" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  
                              PullToRefreshCommand="{Binding LoadItemsCommand}" Padding="0,5,0,10" RowHeaderWidth="5" 
@@ -33,7 +33,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
                 <datagrid:GridTemplateColumn  HeaderText="Přidat do objednávky" ColumnSizer="Auto" MappingName="itemId"  >
                     <datagrid:GridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ImageButton BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit" 
+                            <ImageButton AutomationId="ImageClick" BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit" 
                            Clicked="ImageButton_ClickedAsync" HorizontalOptions="Center" VerticalOptions="Center" 
                                          Source="ic_launcher.png"></ImageButton>
                         </DataTemplate>
@@ -43,7 +43,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
             </datagrid:SfDataGrid.Columns>
         </datagrid:SfDataGrid>
 
-        <Label FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+        <Label FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" AutomationId="LabelCena"
                BackgroundColor="WhiteSmoke" Text="{Binding Celkove}"></Label>
         <StackLayout HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <datagrid:SfDataGrid VerticalOptions="FillAndExpand" ColumnSizer="Star" HeightRequest="45" AutoGenerateColumns="False" 

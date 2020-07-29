@@ -12,7 +12,7 @@ namespace UITestProject
     {
         IApp app;
         Platform platform;
-
+        public int Cena = 999;
         public Tests(Platform platform)
         {
             this.platform = platform;
@@ -32,26 +32,45 @@ namespace UITestProject
             app.EnterText("UserLabel","cisnik");
             app.EnterText("PassLabel", "cisnik");
             app.Tap(x => x.Marked("Loginbtn"));
+  
+
 
         }
         [Test, Order(2)]
         public void B_TablePage()
         {
-            System.Threading.Thread.Sleep(2000);
-            var items = app.WaitForElement(x => x.Marked("TestLayout"));
+           
+            var items = app.WaitForElement(x => x.Marked("SyncfusionGrid"));
+            app.DoubleTap("SyncfusionGrid Row3");
 
 
         }
 
     
         [Test, Order(3)]
-        public void OrderDetailPage()
+        public void AddItemToOrder()
 
         {
+            System.Threading.Thread.Sleep(2500);
+            var items = app.WaitForElement(x => x.Marked("ImageClick"));
+            app.Tap("DatagridPolozka R4C2");
+        }
+        [Test, Order(4)]
+        public void CheckCenu()
+
+        {
+            Cena = int.Parse(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text);
 
         }
 
 
+
+        [Test, Order(5)]
+        public void CommitOrder()
+
+        {
+
+        }
 
     }
 }

@@ -28,7 +28,6 @@ namespace App2.Views
         public Zkouska()
         {
             InitializeComponent();
-            SfGrid.AutomationId = "SyncfusionGrid";
             BindingContext = viewModel = new TableesViewModel();
 
 
