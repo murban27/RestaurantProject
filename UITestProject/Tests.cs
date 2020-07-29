@@ -56,17 +56,12 @@ namespace UITestProject
         {
 
             System.Threading.Thread.Sleep(2500);
-            var TabView = app.WaitForElement("TabView");
-            var SubTab = TabView.FirstOrDefault();
-           
-            var ItemTab = app.WaitForElement("TabView Nealko");
-            app.Tap(SubTab.Id);
-            app.Tap(x => x.Marked("TabView Alko"));
-
-            var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
-      
+            var TabView = app.WaitForElement("TabView").FirstOrDefault();//Najde TabView,vybere první element
+            app.Tap(TabView.Id);//Klikne
+            var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).
+                FirstOrDefault().Text, @"\d+").Value; //Načte cenu
             Cena = int.Parse(resultString);
-            var items = app.WaitForElement(x => x.Marked("ImageClick"));
+            var items = app.WaitForElement(x => x.Marked("ImageClick"));//Element přidání do objednávky
             var item = items.FirstOrDefault();
             app.Tap(item.Id);
         }
@@ -76,11 +71,11 @@ namespace UITestProject
         public void CheckTotalPrice()
 
         {
-            System.Threading.Thread.Sleep(2500);
-            var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
-
+            System.Threading.Thread.Sleep(2600);//Uspi
+            var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena"))
+                .FirstOrDefault().Text, @"\d+").Value;//Načti cenu
             FinalPrice = int.Parse(resultString);
-            Assert.AreNotEqual(FinalPrice, Cena);
+            Assert.AreNotEqual(FinalPrice, Cena,"Cena se nezměnila!");//Pokud je cena stále stejná, vyhoď chybu
 
         }
 
