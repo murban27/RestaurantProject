@@ -20,9 +20,9 @@ namespace App2.ViewModels
         public Command LoadItemsCommand { get; set; }
         public StolyViewModel()
         {
-            StolyBackup s = new StolyBackup() {Kapacita=5,Obsazeno=true };
+        
 
-            var a = Stolyies.AddItemAsync(s).GetAwaiter();
+
 
             
             Title = "Stoly";

@@ -83,7 +83,7 @@ namespace App2.ViewModels
             if (result == true)
             {
                 await RebuildOrder(orderDetail);
-                Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label  
+                Celkove = string.Format($"Položky v objednávce\ncelková cena:{ OrderDetails.Sum(X => X.Price).ToString()},- Kč");//Label  
             }
             else
             {
@@ -126,9 +126,13 @@ namespace App2.ViewModels
                     IsBusy = true;
                     OrderInfoServices = new OrderInfoServices();
                     Orders.Clear();
-                    var s = await OrderInfoServices.GetItemAsync(Table.orders[0].id.ToString());
+                var Id = (from L in Table.orders
+                         where L.endTime == null
+                         select L.id).FirstOrDefault();
+                
+                    var s = await OrderInfoServices.GetItemAsync(Id.ToString());
 
-                    if (s != null)
+                    if (Id != null)
                     {
 
                         Orders.Add(s);
@@ -153,7 +157,7 @@ namespace App2.ViewModels
 
                     }
 
-                    Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label      
+                    Celkove = string.Format($"Položky v objednávce, \n celková cena:{ OrderDetails.Sum(X => X.Price).ToString()}");//Label      
 
 
 
