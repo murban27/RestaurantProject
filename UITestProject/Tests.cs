@@ -32,6 +32,7 @@ namespace UITestProject
             app.EnterText("UserLabel","cisnik");
             app.EnterText("PassLabel", "cisnik");
             app.Tap(x => x.Marked("Loginbtn"));
+
         }
         [Test, Order(2)]
         public void B_TablePage()
