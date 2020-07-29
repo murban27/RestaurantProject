@@ -68,7 +68,7 @@ namespace UITestProject
         public void CheckTotalPrice()
 
         {
-            System.Threading.Thread.Sleep(1500);
+            System.Threading.Thread.Sleep(500);
             var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
 
             FinalPrice = int.Parse(resultString);
@@ -90,7 +90,7 @@ namespace UITestProject
         public void ConfirmPayment()
 
         {
-            var item = app.WaitForElement(x => x.Marked("Ano")).FirstOrDefault();
+            var item = app.WaitForElement(x => x.Marked("ConfirmOrder")).FirstOrDefault();
             app.Tap(item.Id);
         }
 
