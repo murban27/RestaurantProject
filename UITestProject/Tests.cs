@@ -15,6 +15,7 @@ namespace UITestProject
         IApp app;
         Platform platform;
         public int Cena = 999;
+        public int FinalPrice = 0;
         public Tests(Platform platform)
         {
             this.platform = platform;
@@ -70,8 +71,8 @@ namespace UITestProject
             System.Threading.Thread.Sleep(500);
             var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
 
-            int ComparePrice = int.Parse(resultString);
-            Assert.AreNotEqual(ComparePrice, Cena);
+            FinalPrice = int.Parse(resultString);
+            Assert.AreNotEqual(FinalPrice, Cena);
 
         }
 
