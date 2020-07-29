@@ -52,7 +52,7 @@ namespace UITestProject
 
         {
             System.Threading.Thread.Sleep(2500);
-            var items = app.WaitForElement(x => x.Marked("ImageClick"));
+            var items = app.WaitForElement(x => x.Marked("DatagridPolozka"));
             app.Tap("DatagridPolozka R4C2");
         }
         [Test, Order(4)]
