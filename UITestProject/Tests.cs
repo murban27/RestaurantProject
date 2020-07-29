@@ -14,7 +14,7 @@ namespace UITestProject
     {
         IApp app;
         Platform platform;
-        public int Cena = 999;
+        public int Cena = 0;
         public int FinalPrice = 0;
         public Tests(Platform platform)
         {
@@ -65,7 +65,7 @@ namespace UITestProject
 
         }
         [Test, Order(4)]
-        public void CheckCenu()
+        public void CheckTotalPrice()
 
         {
             System.Threading.Thread.Sleep(500);
@@ -82,7 +82,16 @@ namespace UITestProject
         public void CommitOrder()
 
         {
+            var item = app.WaitForElement(x => x.Marked("ConfirmOrder")).FirstOrDefault();
+            app.Tap(item.Id);
+        }
 
+        [Test, Order(6)]
+        public void ConfirmPayment()
+
+        {
+            var item = app.WaitForElement(x => x.Marked("ConfirmOrder")).FirstOrDefault();
+            app.Tap(item.Id);
         }
 
     }
