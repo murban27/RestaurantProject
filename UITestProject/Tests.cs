@@ -56,7 +56,13 @@ namespace UITestProject
         {
 
             System.Threading.Thread.Sleep(2500);
-            app.Tap(x => x.Marked("Nealko8"));
+            var TabView = app.WaitForElement("TabView");
+            var SubTab = TabView.FirstOrDefault();
+           
+            var ItemTab = app.WaitForElement("TabView Nealko");
+            app.Tap(SubTab.Id);
+            app.Tap(x => x.Marked("TabView Alko"));
+
             var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
       
             Cena = int.Parse(resultString);
