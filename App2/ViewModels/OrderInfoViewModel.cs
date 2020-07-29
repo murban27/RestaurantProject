@@ -203,6 +203,7 @@ namespace App2.ViewModels
                 {
                     Items.Add(new SfTabItem() { Title = item.name,AutomationId=item.name });
                 }
+                
             }
 
 

@@ -49,14 +49,16 @@ namespace UITestProject
         }
 
 
+
         [Test, Order(3)]
         public void AddItemToOrder()
 
         {
 
             System.Threading.Thread.Sleep(2500);
+            app.Tap(x => x.Marked("Nealko8"));
             var resultString = Regex.Match(app.WaitForElement(x => x.Marked("LabelCena")).FirstOrDefault().Text, @"\d+").Value;
-
+      
             Cena = int.Parse(resultString);
             var items = app.WaitForElement(x => x.Marked("ImageClick"));
             var item = items.FirstOrDefault();

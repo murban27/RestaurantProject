@@ -15,7 +15,7 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
     <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#672255">
         <tabview:SfTabView Items="{Binding Items}" VerticalOptions="Fill" SelectionChanged="SfTabView_SelectionChanged"
                            TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" 
-                           HeightRequest="40" TabHeaderPosition="Top" >
+                           HeightRequest="40" TabHeaderPosition="Top" AutomationId="TabView" >
 
             </tabview:SfTabView>
      
