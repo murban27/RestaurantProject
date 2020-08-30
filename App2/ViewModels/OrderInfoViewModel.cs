@@ -75,7 +75,7 @@ namespace App2.ViewModels
             IsBusy = true;//Informuje view model o nedostupnosti
             OrderDetail orderDetail = new OrderDetail()
             {
-                orderId = Table.orders[0].id,
+                orderId = Orders[0].id,
                 itemId = ItemID
             };
             OrdeDetailService ordeDetailService = new OrdeDetailService();
@@ -83,7 +83,7 @@ namespace App2.ViewModels
             if (result == true)
             {
                 await RebuildOrder(orderDetail);
-                Celkove = string.Format($"Položky v objednávce\ncelková cena:{ OrderDetails.Sum(X => X.Price).ToString()},- Kč");//Label  
+                Celkove = string.Format($"Položky v objednávce, celková cena:{ OrderDetails.Sum(X => X.Price).ToString()},- Kč");//Label  
             }
             else
             {

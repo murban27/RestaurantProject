@@ -11,56 +11,72 @@ xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Button
              xmlns:local="clr-namespace:App2.ViewModels"
              mc:Ignorable="d"
              x:Class="App2.Views.TableCollection">
+    <StackLayout>
+        
 
-    <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#672255">
-        <tabview:SfTabView Items="{Binding Items}" VerticalOptions="Fill" SelectionChanged="SfTabView_SelectionChanged"
-                           TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="#672255" VisibleHeaderCount="3" 
-                           HeightRequest="40" TabHeaderPosition="Top" AutomationId="TabView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+
+
+            <tabview:SfTabView Grid.Row="0" Items="{Binding Items}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectionChanged="SfTabView_SelectionChanged"
+                           TabItemTapped="SfTabView_TabItemTapped"  BackgroundColor="RosyBrown" VisibleHeaderCount="3" TabHeaderPosition="Top" AutomationId="TabView">
             </tabview:SfTabView>
-     
-        <datagrid:SfDataGrid x:Name="SfGrid" HeightRequest="13" HorizontalOptions="FillAndExpand" BackgroundColor="#672255"
+
+            <datagrid:SfDataGrid Grid.Row="1" x:Name="SfGrid" BackgroundColor="#672255"
             ItemsSource="{Binding Polozkas}"  SelectionMode="Single" VerticalOverScrollMode="None" AllowDiagonalScrolling="False" AutomationId="DatagridPolozka" 
                              
-                             VerticalOptions="Start" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  
-                             PullToRefreshCommand="{Binding LoadItemsCommand}" Padding="0,5,0,10" RowHeaderWidth="5" 
-                             HeaderRowHeight="15" Margin="0,5,0,0">
-            <datagrid:SfDataGrid.Columns >
-                <datagrid:GridTextColumn  HeaderText="Položka" MappingName="name" ColumnSizer="Star" >
-   
-                </datagrid:GridTextColumn>
-                <datagrid:GridNumericColumn HeaderText="Cena"  MappingName="price" ColumnSizer="SizeToHeader"/>
-                <datagrid:GridTemplateColumn  HeaderText="Přidat do objednávky" ColumnSizer="Auto" MappingName="itemId"  >
-                    <datagrid:GridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ImageButton AutomationId="ImageClick" BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit" 
+                             VerticalOptions="StartAndExpand" AutoGenerateColumns="False" AllowSorting="True" AllowEditing="false"  
+                             PullToRefreshCommand="{Binding LoadItemsCommand}"  RowHeaderWidth="5" 
+                              Margin="0,0,0,0">
+                <datagrid:SfDataGrid.Columns >
+                    <datagrid:GridTextColumn  HeaderText="Položka" MappingName="name" ColumnSizer="Star" HeaderTextAlignment="Center" LoadUIView="False" >
+
+                    </datagrid:GridTextColumn>
+                    <datagrid:GridNumericColumn HeaderText="Cena" NumberDecimalDigits="0"  MappingName="price" ColumnSizer="SizeToHeader"/>
+                    <datagrid:GridTemplateColumn  HeaderText="Přidat do objednávky" ColumnSizer="Auto" MappingName="itemId"  >
+                        <datagrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ImageButton AutomationId="ImageClick" BackgroundColor="White" MinimumHeightRequest="20" Aspect="AspectFit" 
                            Clicked="ImageButton_ClickedAsync" HorizontalOptions="Center" VerticalOptions="Center" 
                                          Source="ic_launcher.png"></ImageButton>
-                        </DataTemplate>
-                    </datagrid:GridTemplateColumn.CellTemplate>
-                </datagrid:GridTemplateColumn>
-                                             
-            </datagrid:SfDataGrid.Columns>
-        </datagrid:SfDataGrid>
+                            </DataTemplate>
+                        </datagrid:GridTemplateColumn.CellTemplate>
+                    </datagrid:GridTemplateColumn>
 
-        <Label FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" AutomationId="LabelCena"
-               BackgroundColor="WhiteSmoke" Text="{Binding Celkove}"></Label>
-        <StackLayout HeightRequest="50" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <datagrid:SfDataGrid VerticalOptions="FillAndExpand" ColumnSizer="Star" HeightRequest="45" AutoGenerateColumns="False" 
-                                 VerticalOverScrollMode="Bounce"  ScrollingMode="Pixel"
-                ItemsSource="{Binding OrderDetails}" BackgroundColor="#018E6A" >
+                </datagrid:SfDataGrid.Columns>
+            </datagrid:SfDataGrid>
+
+            <StackLayout Grid.Row="2" BackgroundColor="RosyBrown">
+                
+ 
+        <Label   FontSize="Medium" FontAttributes="Bold" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" AutomationId="LabelCena"
+              Text="{Binding Celkove}" Padding="0,10"></Label>
+            </StackLayout>
+
+
+            <datagrid:SfDataGrid Grid.Row="3"  AllowDeleting="True" VerticalOptions="Fill" VerticalOverScrollMode="Bounce" AllowDiagonalScrolling="False" ColumnSizer="Star" AutoGenerateColumns="False" 
+                                 
+                ItemsSource="{Binding OrderDetails}" BackgroundColor="Black" >
                 <datagrid:SfDataGrid.Columns >
                     <datagrid:GridTextColumn  HeaderText="Položka" MappingName="ItemName" ColumnSizer="Star" >
 
                     </datagrid:GridTextColumn>
-                    <datagrid:GridNumericColumn HeaderText="Cena"  MappingName="price" ColumnSizer="SizeToHeader"/>
+                    <datagrid:GridNumericColumn  HeaderText="Cena" NumberDecimalDigits="0" MappingName="price" ColumnSizer="SizeToHeader" Grid.Column="1"/>
                 </datagrid:SfDataGrid.Columns>
             </datagrid:SfDataGrid>
-       
+           
 
-        </StackLayout>
-        
-        <Button Text="Ukonči objednávku" VerticalOptions="Fill" Clicked="Button_Clicked" AutomationId="ConfirmOrder"></Button>
+            <Button Grid.Row="4" Text="Ukonči objednávku" VerticalOptions="End" Clicked="Button_Clicked" AutomationId="ConfirmOrder"></Button>
+
+    </Grid>
+
     </StackLayout>
 </ContentPage>
     
